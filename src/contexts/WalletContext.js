@@ -64,8 +64,7 @@ function WalletProvider({ children }) {
   const connectWallet = async () => {
     // openLoading();
     await authenticate({ 
-      provider: 'walletconnect',
-      mobileLinks: [ 'metamask' ]
+      provider: 'walletconnect'
     })
   };
 
