@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Container, Stack, Typography } from '@mui/material';
-import { FONT_AMARANTH, FONT_RIGHTEOUS } from '../../utils/constants';
 import { grey } from '@mui/material/colors';
+import { FONT_AMARANTH, FONT_RIGHTEOUS } from '../../utils/constants';
 
 export default function IntroductionSection() {
   return (

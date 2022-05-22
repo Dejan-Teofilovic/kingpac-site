@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useReducer } from 'react';
-import { useWeb3React } from '@web3-react/core';
+import { useMoralis } from 'react-moralis';
 import {
   ERROR,
   CHAIN_ID,
@@ -12,8 +12,6 @@ import {
   DECIMALS,
 } from '../utils/constants';
 import { AlertMessageContext } from './AlertMessageContext';
-import { isNoEthereumObject } from '../utils/errors';
-import { injected } from '../utils/connectors';
 import { LoadingContext } from './LoadingContext';
 
 // ----------------------------------------------------------------------
@@ -60,18 +58,19 @@ function WalletProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { openAlert } = useContext(AlertMessageContext);
   const { openLoading, closeLoading } = useContext(LoadingContext);
-  const { active, activate, deactivate, account, chainId } = useWeb3React();
+  const { authenticate, isAuthenticated, isAuthenticating, user, account, logout, chainId, ...others } = useMoralis();
+  console.log('# others => ', others);
 
   const connectWallet = async () => {
-    openLoading();
-    await activate(injected, (error) => {
-      if (isNoEthereumObject(error))
-        window.open("https://metamask.io/download.html");
-    });
+    // openLoading();
+    await authenticate({ 
+      provider: 'walletconnect',
+      mobileLinks: [ 'metamask' ]
+    })
   };
 
-  const disconnectWallet = () => {
-    deactivate();
+  const disconnectWallet = async () => {
+    await logout();
     dispatch({
       type: 'SET_CURRENT_ACCOUNT',
       payload: ''
@@ -84,94 +83,95 @@ function WalletProvider({ children }) {
   };
 
   useEffect(() => {
-    (async () => {
-      if (chainId) {
-        if (chainId === CHAIN_ID) {
-          dispatch({
-            type: 'SET_CURRENT_ACCOUNT',
-            payload: account
-          });
+    // (async () => {
+    //   if (chainId) {
+    //     if (chainId === CHAIN_ID) {
+    //       dispatch({
+    //         type: 'SET_CURRENT_ACCOUNT',
+    //         payload: account
+    //       });
 
-          dispatch({
-            type: 'SET_WALLET_CONNECTED',
-            payload: true
-          });
-        } else {
-          if (window.ethereum) {
-            //  If the current network isn't the expected one, switch it to the expected one.
-            try {
-              await window.ethereum.request({
-                method: 'wallet_switchEthereumChain',
-                params: [{ chainId: `0x${CHAIN_ID.toString(16)}` }],
-              });
+    //       dispatch({
+    //         type: 'SET_WALLET_CONNECTED',
+    //         payload: true
+    //       });
+    //     } else {
+    //       if (window.ethereum) {
+    //         //  If the current network isn't the expected one, switch it to the expected one.
+    //         try {
+    //           await window.ethereum.request({
+    //             method: 'wallet_switchEthereumChain',
+    //             params: [{ chainId: `0x${CHAIN_ID.toString(16)}` }],
+    //           });
 
-              dispatch({
-                type: 'SET_CURRENT_ACCOUNT',
-                payload: account
-              });
+    //           dispatch({
+    //             type: 'SET_CURRENT_ACCOUNT',
+    //             payload: account
+    //           });
 
-              dispatch({
-                type: 'SET_WALLET_CONNECTED',
-                payload: true
-              });
+    //           dispatch({
+    //             type: 'SET_WALLET_CONNECTED',
+    //             payload: true
+    //           });
 
-            } catch (switchError) {
-              //  If the expected network isn't existed in the metamask.
-              if (switchError.code === SWITCH_ERROR_CODE) {
-                await window.ethereum.request({
-                  method: 'wallet_addEthereumChain',
-                  params: [
-                    {
-                      chainId: `0x${CHAIN_ID.toString(16)}`,
-                      chainName: CHAIN_NAME,
-                      rpcUrls: RPC_URLS,
-                      blockExplorerUrls: BLOCK_EXPLORER_URLS,
-                      nativeCurrency: {
-                        name: NATIVE_CURRENCY_NAME,
-                        symbol: NATIVE_CURRENCY_SYMBOL, // 2-6 characters length
-                        decimals: DECIMALS,
-                      }
-                    },
-                  ],
-                });
-                dispatch({
-                  type: 'SET_CURRENT_ACCOUNT',
-                  payload: account
-                });
+    //         } catch (switchError) {
+    //           //  If the expected network isn't existed in the metamask.
+    //           if (switchError.code === SWITCH_ERROR_CODE) {
+    //             await window.ethereum.request({
+    //               method: 'wallet_addEthereumChain',
+    //               params: [
+    //                 {
+    //                   chainId: `0x${CHAIN_ID.toString(16)}`,
+    //                   chainName: CHAIN_NAME,
+    //                   rpcUrls: RPC_URLS,
+    //                   blockExplorerUrls: BLOCK_EXPLORER_URLS,
+    //                   nativeCurrency: {
+    //                     name: NATIVE_CURRENCY_NAME,
+    //                     symbol: NATIVE_CURRENCY_SYMBOL, // 2-6 characters length
+    //                     decimals: DECIMALS,
+    //                   }
+    //                 },
+    //               ],
+    //             });
+    //             dispatch({
+    //               type: 'SET_CURRENT_ACCOUNT',
+    //               payload: account
+    //             });
 
-                dispatch({
-                  type: 'SET_WALLET_CONNECTED',
-                  payload: true
-                });
-              } else {
-                dispatch({
-                  type: 'SET_CURRENT_ACCOUNT',
-                  payload: ''
-                });
+    //             dispatch({
+    //               type: 'SET_WALLET_CONNECTED',
+    //               payload: true
+    //             });
+    //           } else {
+    //             dispatch({
+    //               type: 'SET_CURRENT_ACCOUNT',
+    //               payload: ''
+    //             });
 
-                dispatch({
-                  type: 'SET_WALLET_CONNECTED',
-                  payload: false
-                });
+    //             dispatch({
+    //               type: 'SET_WALLET_CONNECTED',
+    //               payload: false
+    //             });
 
-                openAlert({
-                  severity: ERROR,
-                  message: 'Wallet connection failed.'
-                });
-              }
-            }
-          } else {
-            openAlert({ severity: 'error', message: 'Please install Metamask.' });
-            return;
-          }
-        }
-      }
-    })();
-    closeLoading();
+    //             openAlert({
+    //               severity: ERROR,
+    //               message: 'Wallet connection failed.'
+    //             });
+    //           }
+    //         }
+    //       } else {
+    //         openAlert({ severity: 'error', message: 'Please install Metamask.' });
+    //         return;
+    //       }
+    //     }
+    //   }
+    // })();
+    // closeLoading();
+    console.log(chainId);
   }, [chainId]);
 
   useEffect(() => {
-    if (active) {
+    if (isAuthenticated) {
       dispatch({
         type: 'SET_CURRENT_ACCOUNT',
         payload: account

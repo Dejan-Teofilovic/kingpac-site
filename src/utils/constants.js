@@ -22,12 +22,12 @@ export const ROUTES = [
 ];
 
 // Chain infos
-export const CHAIN_ID = 80001;
-export const CHAIN_NAME = 'Mumbai Testnet';
-export const RPC_URLS = ['https://rpc-mumbai.maticvigil.com'];
-export const BLOCK_EXPLORER_URLS = ['https://polygonscan.com/'];
-export const NATIVE_CURRENCY_NAME = 'MATIC';
-export const NATIVE_CURRENCY_SYMBOL = 'MATIC';
+export const CHAIN_ID = 97;
+export const CHAIN_NAME = 'BNB Smart Chain Testnet';
+export const RPC_URLS = ['https://data-seed-prebsc-1-s1.binance.org:8545/'];
+export const BLOCK_EXPLORER_URLS = ['https://testnet.bscscan.com/'];
+export const NATIVE_CURRENCY_NAME = 'TBNB';
+export const NATIVE_CURRENCY_SYMBOL = 'TBNB';
 export const DECIMALS = 18;
 
 export const NO_ETHEREUM_OBJECT = /No Ethereum provider was found on window.ethereum/;
@@ -95,3 +95,7 @@ export const FONT_AMARANTH = "'Amaranth', sans-serif";
 
 // Colors
 export const COLOR_PRIMARY = '#eec51e';
+
+//  Moralis
+export const MORALIS_SERVER_URL = 'https://beim52fyzlek.usemoralis.com:2053/server';
+export const MORALIS_APP_ID = 'zZXNShFa8zHpRKDgaOLBV3FBTMKkMtXPLuUyNgfa'; //  For env
