@@ -7,7 +7,7 @@ import { PrimaryButton } from '../../components/styledComponents';
 export default function HeroSection() {
   return (
     <Container maxWidth="xl">
-      <Grid container spacingX={8} py={{ xs: 3, md: 6 }} alignItems="center">
+      <Grid container spacingX={8} pt={{ xs: 3, md: 6 }} pb={{ xs: 6, md: 12 }} alignItems="center">
         <Grid item xs={12} md={5}>
           <Stack direction="row" justifyContent={{ xs: 'center', md: 'left' }} pl={{ xs: 0, md: 6 }} width="100%">
             <Box 
