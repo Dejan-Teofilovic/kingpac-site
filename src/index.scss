@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+}
+
+.bg-main {
+  background: #000000;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px&display=swap');
+
+.pacman {
+  border-radius: 50%;
+  background: #eec51e;
+  position: relative;
+  margin-top: 20px;
+  
+  &__eye {
+    border-radius: 50%;
+    background: black;
+  }
+  
+  &__mouth {
+    background: #000;
+    clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+    animation-name: eat;
+    animation-duration: 0.7s;
+    animation-iteration-count: infinite;
+  }
+  &__food {
+    background: #FFF;
+    border-radius: 50%;
+    animation-name: food;
+    animation-duration: 0.7s;
+    animation-iteration-count: infinite;
+   }
+}
+
+@keyframes eat {
+  0% {
+    clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+  }
+  25% {
+    clip-path: polygon(100% 60%, 44% 48%, 100% 40%);
+  }
+  
+  50% {
+    clip-path: polygon(100% 50%, 44% 48%, 100% 50%);
+  }
+  
+  75% {
+   clip-path: polygon(100% 59%, 44% 48%, 100% 35%);
+  }
+  
+  100% {
+   clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+  }
+}
+
+@keyframes food {
+  0% { 
+    transform: translateX(0);
+     opacity: 1;
+  }
+  100% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+}

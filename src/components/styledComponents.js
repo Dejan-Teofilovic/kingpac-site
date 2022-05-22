@@ -1,15 +1,15 @@
 import { Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { FONT_RIGHTEOUS } from '../utils/constants';
+import { COLOR_PRIMARY, FONT_RIGHTEOUS } from '../utils/constants';
 
 export const PrimaryButton = styled(Button)`
-  background-color: #eec51e;
+  background-color: ${COLOR_PRIMARY};
   color: black;
   font-family: ${FONT_RIGHTEOUS};
   border-radius: 25px;
   text-transform: capitalize;
   :hover {
-    background-color: #eec51e;
+    background-color: ${COLOR_PRIMARY};
   } 
 `;
 

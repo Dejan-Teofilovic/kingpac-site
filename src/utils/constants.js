@@ -1,13 +1,23 @@
 export const ROUTES = [
   {
     id: 1,
-    name: 'Explore Dice',
-    path: '/explore-dice'
+    name: 'Introduction',
+    path: '#introduction'
   },
   {
     id: 2,
+    name: 'About us',
+    path: '#about-us'
+  },
+  {
+    id: 3,
     name: 'FAQ',
-    path: '/faq'
+    path: '#faq'
+  },
+  {
+    id: 4,
+    name: 'Community',
+    path: '#community'
   }
 ];
 
@@ -82,3 +92,6 @@ export const VAR_FADE_IN_RIGHT = {
 //  Fonts
 export const FONT_RIGHTEOUS = "'Righteous', cursive";
 export const FONT_AMARANTH = "'Amaranth', sans-serif";
+
+// Colors
+export const COLOR_PRIMARY = '#eec51e';
