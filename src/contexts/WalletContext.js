@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useEffect, useReducer } from 'react';
-import { useMoralis } from 'react-moralis';
+import Web3Modal from 'web3modal';
+import WalletConnectProvider from '@walletconnect/web3-provider';
+import { ethers } from 'ethers'
 import {
   ERROR,
   CHAIN_ID,
@@ -10,6 +12,7 @@ import {
   NATIVE_CURRENCY_NAME,
   NATIVE_CURRENCY_SYMBOL,
   DECIMALS,
+  WALLET_CONNECT_INFURA_ID,
 } from '../utils/constants';
 import { AlertMessageContext } from './AlertMessageContext';
 import { LoadingContext } from './LoadingContext';
@@ -19,7 +22,8 @@ import { LoadingContext } from './LoadingContext';
 const initialState = {
   walletConnected: false,
   currentAccount: '',
-  tokenId: 0
+  tokenId: 0,
+  provider: null
 };
 
 const handlers = {
@@ -40,6 +44,12 @@ const handlers = {
       ...state,
       tokenId: action.payload
     };
+  },
+  SET_PROVIDER: (state, action) => {
+    return {
+      ...state,
+      provider: action.payload
+    }
   }
 };
 
@@ -58,18 +68,40 @@ function WalletProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { openAlert } = useContext(AlertMessageContext);
   const { openLoading, closeLoading } = useContext(LoadingContext);
-  const { authenticate, isAuthenticated, isAuthenticating, user, account, logout, chainId, ...others } = useMoralis();
-  console.log('# others => ', others);
+
+  const getWeb3Modal = async () => {
+    const web3Modal = new Web3Modal({
+      network: 'mainnet',
+      cacheProvider: false,
+      providerOptions: {
+        walletconnect: {
+          package: WalletConnectProvider,
+          options: {
+            infuraId: WALLET_CONNECT_INFURA_ID
+          },
+        },
+      }
+    });
+    return web3Modal;
+  };
 
   const connectWallet = async () => {
     // openLoading();
-    await authenticate({ 
-      provider: 'walletconnect'
-    })
+    const web3Modal = await getWeb3Modal();
+    const connection = await web3Modal.connect();
+    const provider = new ethers.providers.Web3Provider(connection);
+    const accounts = await provider.listAccounts();
+    dispatch({
+      type: 'SET_CURRENT_ACCOUNT',
+      payload: accounts[0]
+    });
+    dispatch({
+      type: 'SET_WALLET_CONNECTED',
+      payload: true
+    });
   };
 
   const disconnectWallet = async () => {
-    await logout();
     dispatch({
       type: 'SET_CURRENT_ACCOUNT',
       payload: ''
@@ -81,7 +113,7 @@ function WalletProvider({ children }) {
     });
   };
 
-  useEffect(() => {
+  // useEffect(() => {
     // (async () => {
     //   if (chainId) {
     //     if (chainId === CHAIN_ID) {
@@ -166,22 +198,22 @@ function WalletProvider({ children }) {
     //   }
     // })();
     // closeLoading();
-    console.log(chainId);
-  }, [chainId]);
+    // console.log(chainId);
+  // }, [chainId]);
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      dispatch({
-        type: 'SET_CURRENT_ACCOUNT',
-        payload: account
-      });
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     dispatch({
+  //       type: 'SET_CURRENT_ACCOUNT',
+  //       payload: account
+  //     });
 
-      dispatch({
-        type: 'SET_WALLET_CONNECTED',
-        payload: true
-      });
-    }
-  }, []);
+  //     dispatch({
+  //       type: 'SET_WALLET_CONNECTED',
+  //       payload: true
+  //     });
+  //   }
+  // }, []);
 
   return (
     <WalletContext.Provider

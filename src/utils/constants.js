@@ -99,3 +99,5 @@ export const COLOR_PRIMARY = '#eec51e';
 //  Moralis
 export const MORALIS_SERVER_URL = 'https://beim52fyzlek.usemoralis.com:2053/server';
 export const MORALIS_APP_ID = 'zZXNShFa8zHpRKDgaOLBV3FBTMKkMtXPLuUyNgfa'; //  For env
+
+export const WALLET_CONNECT_INFURA_ID = '8cf3cad623da43f9a84ab5ac94230cf6';
