@@ -2,7 +2,15 @@ import React, { useState } from 'react';
 import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { ethers } from 'ethers';
-import { COLOR_PRIMARY, FONT_RIGHTEOUS, FONT_AMARANTH, TOKEN_CONTRACT_ADDRESS, TOKEN_CONTRACT_ABI, TOKEN_AMOUNT } from '../../utils/constants';
+import {
+  COLOR_PRIMARY,
+  FONT_RIGHTEOUS,
+  FONT_AMARANTH,
+  TOKEN_CONTRACT_ADDRESS,
+  TOKEN_CONTRACT_ABI,
+  TOKEN_AMOUNT,
+  SCAN_API_KEY
+} from '../../utils/constants';
 import { PrimaryButton } from '../../components/styledComponents';
 import DialogAlert from '../../components/DialogAlert';
 import useWallet from '../../hooks/useWallet';
@@ -11,7 +19,7 @@ import useLoading from '../../hooks/useLoading';
 import DialogUserRegister from '../../components/DialogUserRegister';
 
 export default function HeroSection() {
-  const { provider, currentAccount, walletConnected } = useWallet();
+  const { currentAccount, walletConnected } = useWallet();
   const { openAlert } = useAlertMessage();
   const { openLoading, closeLoading } = useLoading();
 
@@ -20,17 +28,15 @@ export default function HeroSection() {
 
   const getBalance = async () => {
     openLoading();
-    const signer = provider.getSigner();
-    const contract = new ethers.Contract(TOKEN_CONTRACT_ADDRESS, TOKEN_CONTRACT_ABI, signer);
-    const { _hex } = await contract.balanceOf(currentAccount);
-    const balance = Number(_hex) * 10 ** -18;
+    const { result } = await (await fetch(`https://api.bscscan.com/api?module=account&action=tokenbalance&contractaddress=${TOKEN_CONTRACT_ADDRESS}&address=${currentAccount}&tag=latest&apikey=${SCAN_API_KEY}`)).json();
     closeLoading();
-    return balance;
+    return Number(result);
   };
 
   const handleOpenDialog = async () => {
     if (walletConnected) {
       const balance = await getBalance();
+      console.log('# balance => ', balance);
       if (balance < TOKEN_AMOUNT) {
         setDialogAlertOpened(true);
       } else {
