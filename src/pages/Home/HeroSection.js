@@ -8,6 +8,7 @@ import DialogAlert from '../../components/DialogAlert';
 import useWallet from '../../hooks/useWallet';
 import useAlertMessage from '../../hooks/useAlertMessage';
 import useLoading from '../../hooks/useLoading';
+import DialogUserRegister from '../../components/DialogUserRegister';
 
 export default function HeroSection() {
   const { provider, currentAccount, walletConnected } = useWallet();
@@ -33,7 +34,7 @@ export default function HeroSection() {
       if (balance < TOKEN_AMOUNT) {
         setDialogAlertOpened(true);
       } else {
-        setDialogUserRegisterOpened(false);
+        setDialogUserRegisterOpened(true);
       }
     } else {
       openAlert({ severity: 'warning', message: 'Please connect wallet.' });
@@ -109,6 +110,7 @@ export default function HeroSection() {
         </Grid>
       </Grid>
       <DialogAlert open={dialogAlertOpened} handleClose={handleCloseDialog} />
+      <DialogUserRegister open={dialogUserRegisterOpened} handleClose={handleCloseDialog} />
     </Container>
   );
 }
