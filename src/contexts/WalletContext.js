@@ -1,18 +1,18 @@
-import 
-  React, 
-  { 
-    createContext, 
-    // useContext, 
-    // useEffect, 
-    useReducer 
-  } 
-from 'react';
+import
+React,
+{
+  createContext,
+  useContext,
+  // useEffect, 
+  useReducer
+}
+  from 'react';
 import Web3Modal from 'web3modal';
 import WalletConnectProvider from '@walletconnect/web3-provider';
 import { ethers } from 'ethers';
 import {
   // ERROR,
-  // CHAIN_ID,
+  CHAIN_ID,
   // SWITCH_ERROR_CODE,
   // CHAIN_NAME,
   // RPC_URLS,
@@ -21,16 +21,15 @@ import {
   // NATIVE_CURRENCY_SYMBOL,
   // DECIMALS,
   WALLET_CONNECT_INFURA_ID,
+  // TOKEN_AMOUNT,
 } from '../utils/constants';
-// import { AlertMessageContext } from './AlertMessageContext';
-// import { LoadingContext } from './LoadingContext';
+import { AlertMessageContext } from './AlertMessageContext';
 
 // ----------------------------------------------------------------------
 
 const initialState = {
   walletConnected: false,
   currentAccount: '',
-  tokenId: 0,
   provider: null
 };
 
@@ -45,12 +44,6 @@ const handlers = {
     return {
       ...state,
       currentAccount: action.payload
-    };
-  },
-  SET_TOKEN_ID: (state, action) => {
-    return {
-      ...state,
-      tokenId: action.payload
     };
   },
   SET_PROVIDER: (state, action) => {
@@ -74,8 +67,7 @@ const WalletContext = createContext({
 //  Provider
 function WalletProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  // const { openAlert } = useContext(AlertMessageContext);
-  // const { openLoading, closeLoading } = useContext(LoadingContext);
+  const { openAlert } = useContext(AlertMessageContext);
 
   const getWeb3Modal = async () => {
     const web3Modal = new Web3Modal({
@@ -97,16 +89,29 @@ function WalletProvider({ children }) {
     const web3Modal = await getWeb3Modal();
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
-    const accounts = await provider.listAccounts();
-    console.log('# accounts => ', accounts);
-    dispatch({
-      type: 'SET_CURRENT_ACCOUNT',
-      payload: accounts[0]
-    });
-    dispatch({
-      type: 'SET_WALLET_CONNECTED',
-      payload: true
-    });
+
+    const { chainId } = await provider.getNetwork();
+
+    if (chainId === CHAIN_ID) {
+      const accounts = await provider.listAccounts();
+      dispatch({
+        type: 'SET_CURRENT_ACCOUNT',
+        payload: accounts[0]
+      });
+
+      dispatch({
+        type: 'SET_WALLET_CONNECTED',
+        payload: true
+      });
+
+      dispatch({
+        type: 'SET_PROVIDER',
+        payload: provider
+      });
+    } else {
+      openAlert({ severity: 'error', message: 'Please switch BNB Smart Chain.' });
+      return;
+    }
   };
 
   const disconnectWallet = async () => {
@@ -118,6 +123,11 @@ function WalletProvider({ children }) {
     dispatch({
       type: 'SET_WALLET_CONNECTED',
       payload: false
+    });
+
+    dispatch({
+      type: 'SET_PROVIDER',
+      payload: null
     });
   };
 

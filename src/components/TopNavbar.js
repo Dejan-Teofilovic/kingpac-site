@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import {
   AppBar,
   Box,
@@ -16,11 +16,10 @@ import {
   Toolbar,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useNavigate } from 'react-router-dom';
+import { grey } from '@mui/material/colors';
 import { PrimaryButton, TextButton } from './styledComponents';
 import { FONT_RIGHTEOUS, ROUTES } from '../utils/constants';
 import useWallet from '../hooks/useWallet';
-import { grey } from '@mui/material/colors';
 
 const CustomizedDrawer = styled(Drawer)`
   .MuiPaper-root {

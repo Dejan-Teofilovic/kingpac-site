@@ -7,8 +7,8 @@ export default function Loading() {
   const { isLoading } = useLoading();
   return (
     <Dialog open={isLoading}>
-      <DialogContent sx={{ bgcolor: '#000000' }}>
-        <CircularProgress sx={{ color: COLOR_PRIMARY }} />
+      <DialogContent sx={{ bgcolor: COLOR_PRIMARY }}>
+        <CircularProgress sx={{ color: 'black' }} />
       </DialogContent>
     </Dialog>
   );

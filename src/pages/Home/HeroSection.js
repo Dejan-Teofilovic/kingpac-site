@@ -1,19 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
-import { COLOR_PRIMARY, FONT_RIGHTEOUS, FONT_AMARANTH } from '../../utils/constants';
+import { ethers } from 'ethers';
+import { COLOR_PRIMARY, FONT_RIGHTEOUS, FONT_AMARANTH, TOKEN_CONTRACT_ADDRESS, TOKEN_CONTRACT_ABI, TOKEN_AMOUNT } from '../../utils/constants';
 import { PrimaryButton } from '../../components/styledComponents';
+import DialogAlert from '../../components/DialogAlert';
+import useWallet from '../../hooks/useWallet';
+import useAlertMessage from '../../hooks/useAlertMessage';
+import useLoading from '../../hooks/useLoading';
 
 export default function HeroSection() {
+  const { provider, currentAccount, walletConnected } = useWallet();
+  const { openAlert } = useAlertMessage();
+  const { openLoading, closeLoading } = useLoading();
+
+  const [dialogAlertOpened, setDialogAlertOpened] = useState(false);
+  const [dialogUserRegisterOpened, setDialogUserRegisterOpened] = useState(false);
+
+  const getBalance = async () => {
+    openLoading();
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(TOKEN_CONTRACT_ADDRESS, TOKEN_CONTRACT_ABI, signer);
+    const { _hex } = await contract.balanceOf(currentAccount);
+    const balance = Number(_hex) * 10 ** -18;
+    closeLoading();
+    return balance;
+  };
+
+  const handleOpenDialog = async () => {
+    if (walletConnected) {
+      const balance = await getBalance();
+      if (balance < TOKEN_AMOUNT) {
+        setDialogAlertOpened(true);
+      } else {
+        setDialogUserRegisterOpened(false);
+      }
+    } else {
+      openAlert({ severity: 'warning', message: 'Please connect wallet.' });
+    }
+  };
+
+  const handleCloseDialog = () => {
+    setDialogAlertOpened(false);
+    setDialogUserRegisterOpened(false);
+  };
+
   return (
     <Container maxWidth="xl">
       <Grid container spacingx={8} pt={{ xs: 3, md: 6 }} pb={{ xs: 6, md: 12 }} alignItems="center">
         <Grid item xs={12} md={5}>
           <Stack direction="row" justifyContent={{ xs: 'center', md: 'left' }} pl={{ xs: 0, md: 6 }} width="100%">
-            <Box 
-              className="pacman" 
-              width={{ xs: 100, sm: 200, md: 300 }} 
-              height={{ xs: 100, sm: 200, md: 300 }} 
+            <Box
+              className="pacman"
+              width={{ xs: 100, sm: 200, md: 300 }}
+              height={{ xs: 100, sm: 200, md: 300 }}
             >
               <Box
                 className="pacman__eye"
@@ -61,11 +101,14 @@ export default function HeroSection() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </Typography>
             <Stack direction="row" justifyContent={{ xs: 'center', md: 'start' }}>
-              <PrimaryButton sx={{ fontSize: { xs: 14, md: 18 }, px: 4 }}>Play Game</PrimaryButton>
+              <PrimaryButton sx={{ fontSize: { xs: 14, md: 18 }, px: 4 }} onClick={handleOpenDialog}>
+                Play Game
+              </PrimaryButton>
             </Stack>
           </Stack>
         </Grid>
       </Grid>
+      <DialogAlert open={dialogAlertOpened} handleClose={handleCloseDialog} />
     </Container>
   );
 }
