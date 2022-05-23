@@ -1,4 +1,4 @@
-import { Button, TextField } from '@mui/material';
+import { Button, Dialog, TextField } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import { COLOR_PRIMARY, FONT_AMARANTH, FONT_RIGHTEOUS } from '../utils/constants';
@@ -50,4 +50,11 @@ export const PrimaryTextField = styled(TextField)({
       borderColor: 'black',
     },
   },
+});
+
+export const CustomDialog = styled(Dialog)({
+  '& .MuiPaper-root': {
+    borderRadius: 25,
+    bgColor: COLOR_PRIMARY
+  }
 });

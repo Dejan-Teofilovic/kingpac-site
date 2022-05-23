@@ -1,14 +1,21 @@
 import React from 'react';
-import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, Link, Typography } from '@mui/material';
+import {
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+  Link,
+  Typography
+} from '@mui/material';
 import { Close } from '@mui/icons-material';
 import { grey } from '@mui/material/colors';
-import { SecondaryButton } from './styledComponents';
+import { CustomDialog, SecondaryButton } from './styledComponents';
 import { COLOR_PRIMARY, FONT_AMARANTH, FONT_RIGHTEOUS } from '../utils/constants';
 
 export default function DialogAlert({ open, handleClose }) {
   return (
-    <Dialog open={open} onClose={handleClose}>
-      <DialogTitle sx={{ p: 2, bgcolor: COLOR_PRIMARY, fontFamily: FONT_RIGHTEOUS }}>
+    <CustomDialog open={open} onClose={handleClose}>
+      <DialogTitle sx={{ py: 2, px: 3, bgcolor: COLOR_PRIMARY, fontFamily: FONT_RIGHTEOUS }}>
         Not Enough Balance
         <IconButton
           onClick={handleClose}
@@ -39,11 +46,11 @@ export default function DialogAlert({ open, handleClose }) {
         </Typography>
         {/* </DialogContentText> */}
       </DialogContent>
-      <DialogActions sx={{ bgcolor: COLOR_PRIMARY }}>
+      <DialogActions sx={{ bgcolor: COLOR_PRIMARY, p: 2 }}>
         <SecondaryButton sx={{ bgcolor: 'black', color: COLOR_PRIMARY }} onClick={handleClose}>
           Cancel
         </SecondaryButton>
       </DialogActions>
-    </Dialog>
+    </CustomDialog>
   );
 }

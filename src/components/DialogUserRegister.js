@@ -1,14 +1,14 @@
 import React from 'react';
-import { Dialog, DialogActions, DialogContent, DialogTitle, IconButton, InputAdornment, Stack } from '@mui/material';
+import { DialogActions, DialogContent, DialogTitle, IconButton, InputAdornment, Stack } from '@mui/material';
 import { COLOR_PRIMARY, FONT_AMARANTH, FONT_RIGHTEOUS } from '../utils/constants';
 import { grey } from '@mui/material/colors';
 import { Close, Telegram, Twitter } from '@mui/icons-material';
-import { PrimaryTextField, SecondaryButton } from './styledComponents';
+import { CustomDialog, PrimaryTextField, SecondaryButton } from './styledComponents';
 
 export default function DialogUserRegister({ open, handleClose }) {
   return (
-    <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
-      <DialogTitle sx={{ p: 2, bgcolor: COLOR_PRIMARY, fontFamily: FONT_RIGHTEOUS }}>
+    <CustomDialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
+      <DialogTitle sx={{ py: 2, px: 3, bgcolor: COLOR_PRIMARY, fontFamily: FONT_RIGHTEOUS }}>
         Please fill the input fields.
         <IconButton
           onClick={handleClose}
@@ -49,7 +49,7 @@ export default function DialogUserRegister({ open, handleClose }) {
         </Stack>
 
       </DialogContent>
-      <DialogActions sx={{ bgcolor: COLOR_PRIMARY }}>
+      <DialogActions sx={{ bgcolor: COLOR_PRIMARY, p: 2 }}>
         <SecondaryButton sx={{ bgcolor: 'black', color: COLOR_PRIMARY }} onClick={handleClose}>
           Submit
         </SecondaryButton>
@@ -57,6 +57,6 @@ export default function DialogUserRegister({ open, handleClose }) {
           Cancel
         </SecondaryButton>
       </DialogActions>
-    </Dialog>
+    </CustomDialog>
   );
 }
