@@ -21,23 +21,23 @@ export default function DialogAlert({ open, handleClose }) {
         ><Close /></IconButton>
       </DialogTitle>
       <DialogContent sx={{ bgcolor: COLOR_PRIMARY }}>
-        <DialogContentText>
-          <Typography gutterBottom fontFamily={FONT_AMARANTH} color={grey[900]}>
-            In order to play the game you need to hold 1Million KingPac token.<br />
-            You wallet doesn’t have 1 million KingPac token so you aren’t eligible to play.<br />
-            <b>
-              <Link target="_blank" href="https://pancakeswap.finance/" sx={{ color: 'black', textDecoration: 'none' }}>
-                Buy token.
-              </Link>
-            </b>
-            &nbsp;And join telegram community&nbsp;
-            <b>
-              <Link target="_blank" href="https://t.me/KingPacToken" sx={{ color: 'black', textDecoration: 'none' }}>
-                here
-              </Link>
-            </b>.
-          </Typography>
-        </DialogContentText>
+        {/* <DialogContentText> */}
+        <Typography gutterBottom fontFamily={FONT_AMARANTH} color={grey[900]}>
+          In order to play the game you need to hold 1Million KingPac token.<br />
+          You wallet doesn’t have 1 million KingPac token so you aren’t eligible to play.<br />
+          <b>
+            <Link target="_blank" href="https://pancakeswap.finance/" sx={{ color: 'black', textDecoration: 'none' }}>
+              Buy token.
+            </Link>
+          </b>
+          &nbsp;And join telegram community&nbsp;
+          <b>
+            <Link target="_blank" href="https://t.me/KingPacToken" sx={{ color: 'black', textDecoration: 'none' }}>
+              here
+            </Link>
+          </b>.
+        </Typography>
+        {/* </DialogContentText> */}
       </DialogContent>
       <DialogActions sx={{ bgcolor: COLOR_PRIMARY }}>
         <SecondaryButton sx={{ bgcolor: 'black', color: COLOR_PRIMARY }} onClick={handleClose}>

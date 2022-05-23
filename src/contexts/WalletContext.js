@@ -2,7 +2,7 @@ import
 React,
 {
   createContext,
-  useContext,
+  // useContext,
   // useEffect, 
   useReducer
 }
@@ -12,7 +12,7 @@ import WalletConnectProvider from '@walletconnect/web3-provider';
 import { ethers } from 'ethers';
 import {
   // ERROR,
-  CHAIN_ID,
+  // CHAIN_ID,
   // SWITCH_ERROR_CODE,
   // CHAIN_NAME,
   // RPC_URLS,
@@ -23,7 +23,7 @@ import {
   WALLET_CONNECT_INFURA_ID,
   // TOKEN_AMOUNT,
 } from '../utils/constants';
-import { AlertMessageContext } from './AlertMessageContext';
+// import { AlertMessageContext } from './AlertMessageContext';
 
 // ----------------------------------------------------------------------
 
@@ -67,7 +67,7 @@ const WalletContext = createContext({
 //  Provider
 function WalletProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { openAlert } = useContext(AlertMessageContext);
+  // const { openAlert } = useContext(AlertMessageContext);
 
   const getWeb3Modal = async () => {
     const web3Modal = new Web3Modal({
@@ -90,28 +90,28 @@ function WalletProvider({ children }) {
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
 
-    const { chainId } = await provider.getNetwork();
+    // const { chainId } = await provider.getNetwork();
 
-    if (chainId === CHAIN_ID) {
-      const accounts = await provider.listAccounts();
-      dispatch({
-        type: 'SET_CURRENT_ACCOUNT',
-        payload: accounts[0]
-      });
+    // if (chainId === CHAIN_ID) {
+    const accounts = await provider.listAccounts();
+    dispatch({
+      type: 'SET_CURRENT_ACCOUNT',
+      payload: accounts[0]
+    });
 
-      dispatch({
-        type: 'SET_WALLET_CONNECTED',
-        payload: true
-      });
+    dispatch({
+      type: 'SET_WALLET_CONNECTED',
+      payload: true
+    });
 
-      dispatch({
-        type: 'SET_PROVIDER',
-        payload: provider
-      });
-    } else {
-      openAlert({ severity: 'error', message: 'Please switch BNB Smart Chain.' });
-      return;
-    }
+    dispatch({
+      type: 'SET_PROVIDER',
+      payload: provider
+    });
+    // } else {
+    // openAlert({ severity: 'error', message: 'Please switch BNB Smart Chain.' });
+    // return;
+    // }
   };
 
   const disconnectWallet = async () => {
