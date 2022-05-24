@@ -6,9 +6,9 @@ import { FAQ, FONT_AMARANTH, FONT_RIGHTEOUS, VAR_FADE_IN_UP } from '../../utils/
 import { SecondaryAccordion } from '../../components/styledComponents';
 import MotionDiv from '../../components/MotionDiv';
 
-export default function FaqSection() {
+export default function FaqSection({ bgcolor }) {
   return (
-    <Box py={8} id="faq">
+    <Box bgcolor={bgcolor} py={8} id="faq">
       <Container maxWidth="lg" id="about-us">
         <MotionDiv variants={VAR_FADE_IN_UP}>
           <Typography

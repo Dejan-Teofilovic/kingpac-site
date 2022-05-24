@@ -1,4 +1,4 @@
-import { Accordion, Button, Card, Dialog, TextField } from '@mui/material';
+import { Accordion, Button, Card, Dialog, TableContainer, TextField } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import { COLOR_PRIMARY, FONT_AMARANTH, FONT_RIGHTEOUS } from '../utils/constants';
@@ -70,4 +70,20 @@ export const SecondaryAccordion = styled(Accordion)({
   '& .Mui-expanded p': {
     color: COLOR_PRIMARY
   },
+});
+
+export const SecondaryTableContainer = styled(TableContainer)({
+  '&.MuiTableContainer-root': {
+    backgroundColor: grey[900]
+  },
+  '& .MuiTableCell-head': {
+    color: COLOR_PRIMARY
+  },
+  '& .MuiTableCell-root': {
+    fontFamily: FONT_AMARANTH,
+    border: 'none'
+  },
+  '& .MuiTableCell-body': {
+    color: grey[300]
+  }
 });

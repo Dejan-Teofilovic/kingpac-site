@@ -7,7 +7,7 @@ import MotionDiv from './MotionDiv';
 
 export default function Footer() {
   return (
-    <Box bgcolor="#222222" py={6} position="relative">
+    <Box bgcolor="#111111" py={6} position="relative">
       {/* Ribbon */}
       <Box position="absolute" top={{ xs: -15, md: -25 }} left={{ xs: 50, md: 100 }}>
         <MotionDiv variants={VAR_FADE_IN_UP}>

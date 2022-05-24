@@ -4,9 +4,9 @@ import { grey } from '@mui/material/colors';
 import { FONT_AMARANTH, FONT_RIGHTEOUS, VAR_FADE_IN_UP, VAR_FADE_IN_DOWN } from '../../utils/constants';
 import MotionDiv from '../../components/MotionDiv';
 
-export default function AboutUsSection() {
+export default function AboutUsSection({ bgcolor }) {
   return (
-    <Box py={8}>
+    <Box bgcolor={bgcolor} py={8}>
       <Container maxWidth="xl" id="about-us">
         <MotionDiv variants={VAR_FADE_IN_UP}>
           <Typography

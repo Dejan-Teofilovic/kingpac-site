@@ -1,26 +1,31 @@
 export const ROUTES = [
   {
     id: 1,
+    name: 'Leaderboard',
+    path: '#leaderboard'
+  },
+  {
+    id: 2,
     name: 'Introduction',
     path: '#introduction'
   },
   {
-    id: 2,
+    id: 3,
     name: 'About us',
     path: '#about-us'
   },
   {
-    id: 3,
+    id: 4,
     name: 'Our team',
     path: '#our-team'
   },
   {
-    id: 4,
+    id: 5,
     name: 'FAQ',
     path: '#faq'
   },
   {
-    id: 5,
+    id: 6,
     name: 'Community',
     path: '#community'
   }
@@ -102,6 +107,114 @@ export const FAQ = [
     question: 'Can I customize the size of my figure?',
     answer: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'
   },
+];
+
+export const WINNERS = [
+  {
+    rank: 1,
+    walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
+    telegramUsername: 'admin123',
+    twitterUsername: 'admin123',
+    trackingTime: 859
+  },
+  {
+    rank: 2,
+    walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
+    telegramUsername: 'admin123',
+    twitterUsername: 'admin123',
+    trackingTime: 859
+  },
+  {
+    rank: 3,
+    walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
+    telegramUsername: 'admin123',
+    twitterUsername: 'admin123',
+    trackingTime: 859
+  },
+  {
+    rank: 4,
+    walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
+    telegramUsername: 'admin123',
+    twitterUsername: 'admin123',
+    trackingTime: 859
+  },
+  {
+    rank: 5,
+    walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
+    telegramUsername: 'admin123',
+    twitterUsername: 'admin123',
+    trackingTime: 859
+  },
+  {
+    rank: 6,
+    walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
+    telegramUsername: 'admin123',
+    twitterUsername: 'admin123',
+    trackingTime: 859
+  },
+  {
+    rank: 7,
+    walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
+    telegramUsername: 'admin123',
+    twitterUsername: 'admin123',
+    trackingTime: 859
+  },
+  {
+    rank: 8,
+    walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
+    telegramUsername: 'admin123',
+    twitterUsername: 'admin123',
+    trackingTime: 859
+  },
+  {
+    rank: 9,
+    walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
+    telegramUsername: 'admin123',
+    twitterUsername: 'admin123',
+    trackingTime: 859
+  },
+  {
+    rank: 10,
+    walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
+    telegramUsername: 'admin123',
+    twitterUsername: 'admin123',
+    trackingTime: 859
+  },
+  {
+    rank: 11,
+    walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
+    telegramUsername: 'admin123',
+    twitterUsername: 'admin123',
+    trackingTime: 859
+  },
+  {
+    rank: 12,
+    walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
+    telegramUsername: 'admin123',
+    twitterUsername: 'admin123',
+    trackingTime: 859
+  },
+  {
+    rank: 13,
+    walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
+    telegramUsername: 'admin123',
+    twitterUsername: 'admin123',
+    trackingTime: 859
+  },
+  {
+    rank: 14,
+    walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
+    telegramUsername: 'admin123',
+    twitterUsername: 'admin123',
+    trackingTime: 859
+  },
+  {
+    rank: 15,
+    walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
+    telegramUsername: 'admin123',
+    twitterUsername: 'admin123',
+    trackingTime: 859
+  }
 ];
 
 // Chain infos
