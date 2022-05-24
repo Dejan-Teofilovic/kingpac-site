@@ -1,31 +1,33 @@
 export const ROUTES = [
   {
-    id: 1,
     name: 'Leaderboard',
     path: '#leaderboard'
   },
   {
-    id: 2,
     name: 'Introduction',
     path: '#introduction'
   },
   {
-    id: 3,
+    name: 'Policy',
+    path: '#policy'
+  },
+  {
     name: 'About us',
     path: '#about-us'
   },
   {
-    id: 4,
+    name: 'Roadmap',
+    path: '#roadmap'
+  },
+  {
     name: 'Our team',
     path: '#our-team'
   },
   {
-    id: 5,
     name: 'FAQ',
     path: '#faq'
   },
   {
-    id: 6,
     name: 'Community',
     path: '#community'
   }

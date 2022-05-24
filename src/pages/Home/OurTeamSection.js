@@ -5,9 +5,9 @@ import { FONT_RIGHTEOUS, TEAM_MEMBERS, VAR_FADE_IN_UP, VAR_FADE_IN_DOWN } from '
 import CardTeamMember from '../../components/CardTeamMember';
 import MotionDiv from '../../components/MotionDiv';
 
-export default function OurTeamSection({ bgcolor }) {
+export default function OurTeamSection({ bgcolor, id }) {
   return (
-    <Box bgcolor={bgcolor} py={8}>
+    <Box bgcolor={bgcolor} py={8} id={id}>
       <Container maxWidth="xl" id="our-team">
         <MotionDiv variants={VAR_FADE_IN_UP}>
           <Typography

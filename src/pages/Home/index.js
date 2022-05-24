@@ -6,26 +6,36 @@ import HeroSection from './HeroSection';
 import IntroductionSection from './IntroductionSection';
 import LeaderboardSection from './LeaderboardSection';
 import OurTeamSection from './OurTeamSection';
+import PolicySection from './PolicySection';
+import RoadmapSection from './RoadmapSection';
 
 const SECTIONS = [
   {
-    id: 1,
+    id: 'leaderboard',
     pageSection: LeaderboardSection
   },
   {
-    id: 2,
+    id: 'introduction',
     pageSection: IntroductionSection
   },
   {
-    id: 3,
+    id: 'policy',
+    pageSection: PolicySection
+  },
+  {
+    id: 'about-us',
     pageSection: AboutUsSection
   },
   {
-    id: 4,
+    id: 'roadmap',
+    pageSection: RoadmapSection
+  },
+  {
+    id: 'our-team',
     pageSection: OurTeamSection
   },
   {
-    id: 5,
+    id: 'faq',
     pageSection: FaqSection
   }
 ];
@@ -35,8 +45,8 @@ export default function Home() {
     <>
       <HeroSection />
       {
-        SECTIONS.map(sectionItem => (
-          sectionItem.id % 2 === 1 ? (
+        SECTIONS.map((sectionItem, index) => (
+          index % 2 === 0 ? (
             createElement(sectionItem.pageSection, {
               bgcolor: '#111111',
               key: sectionItem.id

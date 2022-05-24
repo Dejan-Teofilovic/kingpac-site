@@ -1,14 +1,12 @@
 import React from 'react';
 import {
   Box,
-  Card,
   CardHeader,
   Container,
   Paper,
   Table,
   TableBody,
   TableCell,
-  TableContainer,
   TableHead,
   TableRow,
   Typography
@@ -18,10 +16,10 @@ import MotionDiv from '../../components/MotionDiv';
 import { FONT_RIGHTEOUS, VAR_FADE_IN_UP, WINNERS } from '../../utils/constants';
 import { PrimaryCard, SecondaryTableContainer } from '../../components/styledComponents';
 
-export default function LeaderboardSection({ bgcolor }) {
+export default function LeaderboardSection({ bgcolor, id }) {
   return (
-    <Box bgcolor={bgcolor} py={8}>
-      <Container maxWidth="lg" id="leaderboard">
+    <Box bgcolor={bgcolor} py={8} id={id}>
+      <Container maxWidth="lg">
         <MotionDiv variants={VAR_FADE_IN_UP}>
           <Typography
             fontFamily={FONT_RIGHTEOUS}
