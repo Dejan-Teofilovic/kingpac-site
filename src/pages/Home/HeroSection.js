@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
-import { ethers } from 'ethers';
 import {
   COLOR_PRIMARY,
   FONT_RIGHTEOUS,
   FONT_AMARANTH,
   TOKEN_CONTRACT_ADDRESS,
-  TOKEN_CONTRACT_ABI,
   TOKEN_AMOUNT,
   SCAN_API_KEY
 } from '../../utils/constants';

@@ -1,4 +1,4 @@
-import { Button, Dialog, TextField } from '@mui/material';
+import { Button, Card, Dialog, TextField } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import { COLOR_PRIMARY, FONT_AMARANTH, FONT_RIGHTEOUS } from '../utils/constants';
@@ -57,4 +57,9 @@ export const CustomDialog = styled(Dialog)({
     borderRadius: 25,
     bgColor: COLOR_PRIMARY
   }
+});
+
+export const PrimaryCard = styled(Card)({
+  borderRadius: 25,
+  backgroundColor: COLOR_PRIMARY
 });

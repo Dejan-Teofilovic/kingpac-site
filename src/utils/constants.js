@@ -21,6 +21,41 @@ export const ROUTES = [
   }
 ];
 
+export const TEAM_MEMBERS = [
+  {
+    id: 1,
+    name: 'John Doe',
+    position: 'Senior Developer',
+    image: '/assets/images/woman.png',
+    linkedin: '#',
+    telegram: '#'
+  },
+  {
+    id: 1,
+    name: 'John Doe',
+    position: 'Senior Developer',
+    image: '/assets/images/woman.png',
+    linkedin: '#',
+    telegram: '#'
+  },
+  {
+    id: 1,
+    name: 'John Doe',
+    position: 'Senior Developer',
+    image: '/assets/images/woman.png',
+    linkedin: '#',
+    telegram: '#'
+  },
+  {
+    id: 1,
+    name: 'John Doe',
+    position: 'Senior Developer',
+    image: '/assets/images/woman.png',
+    linkedin: '#',
+    telegram: '#'
+  }
+];
+
 // Chain infos
 export const CHAIN_ID = 56;
 export const CHAIN_NAME = 'Binance Smart Chain';
