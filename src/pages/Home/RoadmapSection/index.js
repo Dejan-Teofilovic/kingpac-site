@@ -1,8 +1,11 @@
 import React from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
-import MotionDiv from '../../components/MotionDiv';
-import { FONT_RIGHTEOUS, VAR_FADE_IN_UP } from '../../utils/constants';
+import MotionDiv from '../../../components/MotionDiv';
+import { FONT_RIGHTEOUS, VAR_FADE_IN_UP } from '../../../utils/constants';
+import DesktopRoadmap from './DesktopRoadmap';
+import MHidden from '../../../components/MHidden';
+import MobileRoadmap from './MobileRoadmap';
 
 export default function RoadmapSection({ bgcolor, id }) {
   return (
@@ -18,6 +21,13 @@ export default function RoadmapSection({ bgcolor, id }) {
             Roadmap
           </Typography>
         </MotionDiv>
+
+        <MHidden width="mdDown">
+          <DesktopRoadmap />
+        </MHidden>
+        <MHidden width="mdUp">
+          <MobileRoadmap />
+        </MHidden>
       </Container>
     </Box>
   );

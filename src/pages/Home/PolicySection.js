@@ -35,11 +35,13 @@ export default function PolicySection({ bgcolor, id }) {
               color={grey[300]}
             >BUY</Typography>
             <Stack mt={3} spacing={3}>
-              {
-                POLICIES_BUY.map(dataItem => (
-                  <CustomLinearProgressbar key={dataItem.label} label={dataItem.label} value={dataItem.value} />
-                ))
-              }
+              <MotionDiv variants={VAR_FADE_IN_UP}>
+                {
+                  POLICIES_BUY.map(dataItem => (
+                    <CustomLinearProgressbar key={dataItem.label} label={dataItem.label} value={dataItem.value} />
+                  ))
+                }
+              </MotionDiv>
             </Stack>
           </Grid>
           <Grid item xs={12} md={6}>
@@ -50,11 +52,13 @@ export default function PolicySection({ bgcolor, id }) {
               color={grey[300]}
             >SELL</Typography>
             <Stack mt={3} spacing={3}>
-              {
-                POLICIES_SELL.map(dataItem => (
-                  <CustomLinearProgressbar key={dataItem.label} label={dataItem.label} value={dataItem.value} />
-                ))
-              }
+              <MotionDiv variants={VAR_FADE_IN_UP}>
+                {
+                  POLICIES_SELL.map(dataItem => (
+                    <CustomLinearProgressbar key={dataItem.label} label={dataItem.label} value={dataItem.value} />
+                  ))
+                }
+              </MotionDiv>
             </Stack>
           </Grid>
         </Grid>

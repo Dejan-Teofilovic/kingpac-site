@@ -257,6 +257,46 @@ export const POLICIES_SELL = [
   },
 ];
 
+export const ROADMAP_DATA = [
+  {
+    name: 'Phase 1',
+    content: [
+      'Seed',
+      'Private sale',
+      'Public sale',
+      'Pre-launch marketing'
+    ]
+  },
+  {
+    name: 'Phase 2',
+    content: [
+      'Launch on Pancakeswap',
+      'Website launch',
+      'Game Launch',
+      'Marketing Push'
+    ]
+  },
+  {
+    name: 'Phase 3',
+    content: [
+      'NFTs launch',
+      'Coinmarketcap Listing',
+      'Coingecko Listing',
+      'Global reach',
+      'Influencer Marketing'
+    ]
+  },
+  {
+    name: 'Phase 4',
+    content: [
+      'Website 2.0',
+      'Pools and staking',
+      'Certik Audit',
+      'Multi-Chain Launch'
+    ]
+  }
+];
+
 // Chain infos
 export const CHAIN_ID = 56;
 export const CHAIN_NAME = 'Binance Smart Chain';

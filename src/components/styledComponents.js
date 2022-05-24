@@ -1,3 +1,4 @@
+import { TimelineItem } from '@mui/lab';
 import { Accordion, Button, Card, Dialog, LinearProgress, linearProgressClasses, TableContainer, TextField } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
@@ -99,3 +100,9 @@ export const PrimaryLinearProgressbar = styled(LinearProgress)({
     backgroundColor: COLOR_PRIMARY,
   },
 });
+
+export const CustomTimelineItem = styled(TimelineItem)(({ theme }) => ({
+  '&.MuiTimelineItem-root:before': {
+    flex: 'none'
+  }
+}));
