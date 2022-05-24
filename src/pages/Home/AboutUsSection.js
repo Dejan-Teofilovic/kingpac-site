@@ -1,8 +1,7 @@
 import React from 'react';
-import { Box, Container, Grid, Typography } from '@mui/material';
+import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
-import { FONT_RIGHTEOUS, TEAM_MEMBERS } from '../../utils/constants';
-import CardTeamMember from '../../components/CardTeamMember';
+import { FONT_AMARANTH, FONT_RIGHTEOUS } from '../../utils/constants';
 
 export default function AboutUsSection() {
   return (
@@ -16,14 +15,26 @@ export default function AboutUsSection() {
         >
           Who we are?
         </Typography>
-        <Grid mt={3} container spacing={6}>
-          {
-            TEAM_MEMBERS.map(member => (
-              <Grid key={member.id} item xs={12} sm={6} md={3}>
-                <CardTeamMember data={member} />
-              </Grid>
-            ))
-          }
+
+        <Grid container spacing={4} alignItems="center">
+          <Grid item xs={12} md={9}>
+            <Typography
+              fontFamily={FONT_AMARANTH}
+              color={grey[400]}
+              fontSize={{ xs: 14, md: 18 }}
+              textAlign={{ xs: 'center', md: 'left' }}
+              mt={5}
+              px={{ xs: 0, md: 16 }}
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <Stack direction="row" width="100%" justifyContent={{ xs: 'center', md: 'start' }}>
+              <Box component="img" src="/assets/images/about_us_hero.png" alt="About us" width="70%" />
+            </Stack>
+          </Grid>
         </Grid>
       </Container>
     </Box>

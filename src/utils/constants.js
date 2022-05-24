@@ -11,11 +11,16 @@ export const ROUTES = [
   },
   {
     id: 3,
+    name: 'Our team',
+    path: '#our-team'
+  },
+  {
+    id: 4,
     name: 'FAQ',
     path: '#faq'
   },
   {
-    id: 4,
+    id: 5,
     name: 'Community',
     path: '#community'
   }
