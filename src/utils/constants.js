@@ -36,7 +36,7 @@ export const TEAM_MEMBERS = [
     telegram: '#'
   },
   {
-    id: 1,
+    id: 2,
     name: 'John Doe',
     position: 'Senior Developer',
     image: '/assets/images/woman.png',
@@ -44,7 +44,7 @@ export const TEAM_MEMBERS = [
     telegram: '#'
   },
   {
-    id: 1,
+    id: 3,
     name: 'John Doe',
     position: 'Senior Developer',
     image: '/assets/images/woman.png',
@@ -52,7 +52,7 @@ export const TEAM_MEMBERS = [
     telegram: '#'
   },
   {
-    id: 1,
+    id: 4,
     name: 'John Doe',
     position: 'Senior Developer',
     image: '/assets/images/woman.png',
