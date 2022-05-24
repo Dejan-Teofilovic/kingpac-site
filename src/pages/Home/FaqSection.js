@@ -7,7 +7,7 @@ import { ExpandMore } from '@mui/icons-material';
 
 export default function FaqSection() {
   return (
-    <Box py={8}>
+    <Box py={8} id="faq">
       <Container maxWidth="lg" id="about-us">
         <Typography
           fontFamily={FONT_RIGHTEOUS}
@@ -43,7 +43,6 @@ export default function FaqSection() {
             ))
           }
         </Box>
-
       </Container>
     </Box>
   );
