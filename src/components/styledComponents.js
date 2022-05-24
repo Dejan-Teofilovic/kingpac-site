@@ -1,4 +1,4 @@
-import { Accordion, Button, Card, Dialog, TableContainer, TextField } from '@mui/material';
+import { Accordion, Button, Card, Dialog, LinearProgress, linearProgressClasses, TableContainer, TextField } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import { COLOR_PRIMARY, FONT_AMARANTH, FONT_RIGHTEOUS } from '../utils/constants';
@@ -86,4 +86,16 @@ export const SecondaryTableContainer = styled(TableContainer)({
   '& .MuiTableCell-body': {
     color: grey[300]
   }
+});
+
+export const PrimaryLinearProgressbar = styled(LinearProgress)({
+  height: 10,
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor: '#362e11',
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    borderRadius: 5,
+    backgroundColor: COLOR_PRIMARY,
+  },
 });

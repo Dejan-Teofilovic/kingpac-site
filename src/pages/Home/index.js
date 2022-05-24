@@ -49,11 +49,13 @@ export default function Home() {
           index % 2 === 0 ? (
             createElement(sectionItem.pageSection, {
               bgcolor: '#111111',
+              id: sectionItem.id,
               key: sectionItem.id
             })
           ) : (
             createElement(sectionItem.pageSection, {
               bgcolor: 'black',
+              id: sectionItem.id,
               key: sectionItem.id
             })
           )

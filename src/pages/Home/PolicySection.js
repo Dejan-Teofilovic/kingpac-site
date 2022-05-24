@@ -1,8 +1,9 @@
 import React from 'react';
-import { Box, Container, Typography } from '@mui/material';
+import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import MotionDiv from '../../components/MotionDiv';
-import { FONT_RIGHTEOUS, VAR_FADE_IN_UP } from '../../utils/constants';
+import { FONT_RIGHTEOUS, POLICIES_BUY, POLICIES_SELL, VAR_FADE_IN_UP } from '../../utils/constants';
+import CustomLinearProgressbar from '../../components/CustomLinearProgressBar';
 
 export default function PolicySection({ bgcolor, id }) {
   return (
@@ -25,6 +26,38 @@ export default function PolicySection({ bgcolor, id }) {
             &nbsp;Sell Policy
           </Typography>
         </MotionDiv>
+        <Grid container spacing={8} mt={1}>
+          <Grid item xs={12} md={6}>
+            <Typography
+              fontFamily={FONT_RIGHTEOUS}
+              fontSize={{ xs: 18, md: 24 }}
+              textAlign="center"
+              color={grey[300]}
+            >BUY</Typography>
+            <Stack mt={3} spacing={3}>
+              {
+                POLICIES_BUY.map(dataItem => (
+                  <CustomLinearProgressbar key={dataItem.label} label={dataItem.label} value={dataItem.value} />
+                ))
+              }
+            </Stack>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Typography
+              fontFamily={FONT_RIGHTEOUS}
+              fontSize={{ xs: 18, md: 24 }}
+              textAlign="center"
+              color={grey[300]}
+            >SELL</Typography>
+            <Stack mt={3} spacing={3}>
+              {
+                POLICIES_SELL.map(dataItem => (
+                  <CustomLinearProgressbar key={dataItem.label} label={dataItem.label} value={dataItem.value} />
+                ))
+              }
+            </Stack>
+          </Grid>
+        </Grid>
       </Container>
     </Box>
   );

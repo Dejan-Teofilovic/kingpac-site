@@ -219,6 +219,44 @@ export const WINNERS = [
   }
 ];
 
+export const POLICIES_BUY = [
+  {
+    label: 'Market wallet',
+    value: 3
+  },
+  {
+    label: 'Liquidity pool',
+    value: 2
+  },
+  {
+    label: 'Gaming reward pool',
+    value: 2
+  },
+  {
+    label: 'Buyback',
+    value: 2
+  },
+];
+
+export const POLICIES_SELL = [
+  {
+    label: 'Market wallet',
+    value: 4
+  },
+  {
+    label: 'Liquidity pool',
+    value: 2
+  },
+  {
+    label: 'Gaming reward pool',
+    value: 2
+  },
+  {
+    label: 'Buyback',
+    value: 5
+  },
+];
+
 // Chain infos
 export const CHAIN_ID = 56;
 export const CHAIN_NAME = 'Binance Smart Chain';

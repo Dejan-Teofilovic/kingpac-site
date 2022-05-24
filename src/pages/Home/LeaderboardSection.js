@@ -72,8 +72,6 @@ export default function LeaderboardSection({ bgcolor, id }) {
                 </TableBody>
               </Table>
             </SecondaryTableContainer>
-
-
           </PrimaryCard>
         </MotionDiv>
         <MotionDiv variants={VAR_FADE_IN_UP}>

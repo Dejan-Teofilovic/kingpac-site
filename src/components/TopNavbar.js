@@ -29,7 +29,6 @@ const CustomizedDrawer = styled(Drawer)`
 
 export default function TopNavbar() {
   const navigate = useNavigate();
-
   const { connectWallet, walletConnected, disconnectWallet } = useWallet();
 
   const [drawerOpened, setDrawerOpened] = useState(false);
