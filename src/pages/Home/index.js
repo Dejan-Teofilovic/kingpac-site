@@ -1,5 +1,6 @@
 import React from 'react';
 import AboutUsSection from './AboutUsSection';
+import FaqSection from './FaqSection';
 import HeroSection from './HeroSection';
 import IntroductionSection from './IntroductionSection';
 import OurTeamSection from './OurTeamSection';
@@ -11,6 +12,7 @@ export default function Home() {
       <IntroductionSection />
       <AboutUsSection />
       <OurTeamSection />
+      <FaqSection />
     </>
   );
 }

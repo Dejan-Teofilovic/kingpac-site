@@ -1,4 +1,4 @@
-import { Button, Card, Dialog, TextField } from '@mui/material';
+import { Accordion, Button, Card, Dialog, TextField } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import { COLOR_PRIMARY, FONT_AMARANTH, FONT_RIGHTEOUS } from '../utils/constants';
@@ -62,4 +62,12 @@ export const CustomDialog = styled(Dialog)({
 export const PrimaryCard = styled(Card)({
   borderRadius: 25,
   backgroundColor: COLOR_PRIMARY
+});
+
+export const SecondaryAccordion = styled(Accordion)({
+  backgroundColor: grey[900],
+  color: grey[200],
+  '& .Mui-expanded p': {
+    color: COLOR_PRIMARY
+  },
 });
