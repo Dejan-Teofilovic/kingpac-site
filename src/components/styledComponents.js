@@ -82,10 +82,13 @@ export const SecondaryTableContainer = styled(TableContainer)({
   },
   '& .MuiTableCell-root': {
     fontFamily: FONT_AMARANTH,
-    border: 'none'
+    border: 'none',
+    padding: '5px 5px'
   },
   '& .MuiTableCell-body': {
-    color: grey[300]
+    color: grey[300],
+    maxWidth: 60,
+    overflow: 'auto'
   }
 });
 

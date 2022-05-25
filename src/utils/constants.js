@@ -117,105 +117,105 @@ export const WINNERS = [
     walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
     telegramUsername: 'admin123',
     twitterUsername: 'admin123',
-    trackingTime: 859
+    completedLevels: 10
   },
   {
     rank: 2,
     walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
     telegramUsername: 'admin123',
     twitterUsername: 'admin123',
-    trackingTime: 859
+    completedLevels: 10
   },
   {
     rank: 3,
     walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
     telegramUsername: 'admin123',
     twitterUsername: 'admin123',
-    trackingTime: 859
+    completedLevels: 10
   },
   {
     rank: 4,
     walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
     telegramUsername: 'admin123',
     twitterUsername: 'admin123',
-    trackingTime: 859
+    completedLevels: 10
   },
   {
     rank: 5,
     walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
     telegramUsername: 'admin123',
     twitterUsername: 'admin123',
-    trackingTime: 859
+    completedLevels: 10
   },
   {
     rank: 6,
     walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
     telegramUsername: 'admin123',
     twitterUsername: 'admin123',
-    trackingTime: 859
+    completedLevels: 10
   },
   {
     rank: 7,
     walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
     telegramUsername: 'admin123',
     twitterUsername: 'admin123',
-    trackingTime: 859
+    completedLevels: 10
   },
   {
     rank: 8,
     walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
     telegramUsername: 'admin123',
     twitterUsername: 'admin123',
-    trackingTime: 859
+    completedLevels: 10
   },
   {
     rank: 9,
     walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
     telegramUsername: 'admin123',
     twitterUsername: 'admin123',
-    trackingTime: 859
+    completedLevels: 10
   },
   {
     rank: 10,
     walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
     telegramUsername: 'admin123',
     twitterUsername: 'admin123',
-    trackingTime: 859
+    completedLevels: 10
   },
   {
     rank: 11,
     walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
     telegramUsername: 'admin123',
     twitterUsername: 'admin123',
-    trackingTime: 859
+    completedLevels: 10
   },
   {
     rank: 12,
     walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
     telegramUsername: 'admin123',
     twitterUsername: 'admin123',
-    trackingTime: 859
+    completedLevels: 10
   },
   {
     rank: 13,
     walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
     telegramUsername: 'admin123',
     twitterUsername: 'admin123',
-    trackingTime: 859
+    completedLevels: 10
   },
   {
     rank: 14,
     walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
     telegramUsername: 'admin123',
     twitterUsername: 'admin123',
-    trackingTime: 859
+    completedLevels: 10
   },
   {
     rank: 15,
     walletAddress: '0x51d2c6db60b43B17b1E51224BB7433d74b7B6838',
     telegramUsername: 'admin123',
     twitterUsername: 'admin123',
-    trackingTime: 859
+    completedLevels: 10
   }
 ];
 

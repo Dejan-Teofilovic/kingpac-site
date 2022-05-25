@@ -49,11 +49,11 @@ export default function LeaderboardSection({ bgcolor, id }) {
               <Table>
                 <TableHead>
                   <TableRow>
-                    <TableCell>Rank</TableCell>
-                    <TableCell>Wallet address</TableCell>
-                    <TableCell>Telegram username</TableCell>
-                    <TableCell>Twitter username</TableCell>
-                    <TableCell>Total tracking time</TableCell>
+                    <TableCell align="center">Rank</TableCell>
+                    <TableCell align="center">Wallet address</TableCell>
+                    <TableCell align="center">Telegram username</TableCell>
+                    <TableCell align="center">Twitter username</TableCell>
+                    <TableCell align="center">Completed Levels</TableCell>
                   </TableRow>
                 </TableHead>
 
@@ -61,11 +61,11 @@ export default function LeaderboardSection({ bgcolor, id }) {
                   {
                     WINNERS.map(winner => (
                       <TableRow key={winner.rank}>
-                        <TableCell>{winner.rank}</TableCell>
-                        <TableCell>{winner.walletAddress}</TableCell>
-                        <TableCell>{winner.telegramUsername}</TableCell>
-                        <TableCell>{winner.twitterUsername}</TableCell>
-                        <TableCell>{Math.floor(winner.trackingTime / 60)}min {winner.trackingTime % 60}s</TableCell>
+                        <TableCell align="center">{winner.rank}</TableCell>
+                        <TableCell align="center">{winner.walletAddress}</TableCell>
+                        <TableCell align="center">{winner.telegramUsername}</TableCell>
+                        <TableCell align="center">{winner.twitterUsername}</TableCell>
+                        <TableCell align="center">{winner.completedLevels}</TableCell>
                       </TableRow>
                     ))
                   }
@@ -93,11 +93,11 @@ export default function LeaderboardSection({ bgcolor, id }) {
               <Table>
                 <TableHead>
                   <TableRow>
-                    <TableCell>Rank</TableCell>
-                    <TableCell>Wallet address</TableCell>
-                    <TableCell>Telegram username</TableCell>
-                    <TableCell>Twitter username</TableCell>
-                    <TableCell>Total tracking time</TableCell>
+                    <TableCell align="center">Rank</TableCell>
+                    <TableCell align="center">Wallet address</TableCell>
+                    <TableCell align="center">Telegram username</TableCell>
+                    <TableCell align="center">Twitter username</TableCell>
+                    <TableCell align="center">Completed Levels</TableCell>
                   </TableRow>
                 </TableHead>
 
@@ -105,11 +105,11 @@ export default function LeaderboardSection({ bgcolor, id }) {
                   {
                     WINNERS.map(winner => (
                       <TableRow key={winner.rank}>
-                        <TableCell>{winner.rank}</TableCell>
-                        <TableCell>{winner.walletAddress}</TableCell>
-                        <TableCell>{winner.telegramUsername}</TableCell>
-                        <TableCell>{winner.twitterUsername}</TableCell>
-                        <TableCell>{Math.floor(winner.trackingTime / 60)}min {winner.trackingTime % 60}s</TableCell>
+                        <TableCell align="center">{winner.rank}</TableCell>
+                        <TableCell align="center">{winner.walletAddress}</TableCell>
+                        <TableCell align="center">{winner.telegramUsername}</TableCell>
+                        <TableCell align="center">{winner.twitterUsername}</TableCell>
+                        <TableCell align="center">{winner.completedLevels}</TableCell>
                       </TableRow>
                     ))
                   }
