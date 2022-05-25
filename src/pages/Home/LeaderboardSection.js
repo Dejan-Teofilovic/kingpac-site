@@ -13,8 +13,8 @@ import {
 } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import MotionDiv from '../../components/MotionDiv';
-import { FONT_RIGHTEOUS, VAR_FADE_IN_UP, WINNERS } from '../../utils/constants';
 import { PrimaryCard, SecondaryTableContainer } from '../../components/styledComponents';
+import { FONT_RIGHTEOUS, VAR_FADE_IN_UP, WINNERS } from '../../utils/constants';
 
 export default function LeaderboardSection({ bgcolor, id }) {
   return (
@@ -52,8 +52,9 @@ export default function LeaderboardSection({ bgcolor, id }) {
                     <TableCell align="center">Rank</TableCell>
                     <TableCell align="center">Wallet address</TableCell>
                     <TableCell align="center">Telegram username</TableCell>
-                    <TableCell align="center">Twitter username</TableCell>
+                    <TableCell align="center" sx={{ display: { xs: 'none', md: 'block' } }}>Twitter username</TableCell>
                     <TableCell align="center">Completed Levels</TableCell>
+                    <TableCell align="center">Reward</TableCell>
                   </TableRow>
                 </TableHead>
 
@@ -61,11 +62,17 @@ export default function LeaderboardSection({ bgcolor, id }) {
                   {
                     WINNERS.map(winner => (
                       <TableRow key={winner.rank}>
-                        <TableCell align="center">{winner.rank}</TableCell>
-                        <TableCell align="center">{winner.walletAddress}</TableCell>
-                        <TableCell align="center">{winner.telegramUsername}</TableCell>
-                        <TableCell align="center">{winner.twitterUsername}</TableCell>
-                        <TableCell align="center">{winner.completedLevels}</TableCell>
+                        <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.rank}</TableCell>
+                        <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.walletAddress}</TableCell>
+                        <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.telegramUsername}</TableCell>
+                        <TableCell
+                          align="center"
+                          sx={{ display: { xs: 'none', md: 'block' }, maxWidth: { xs: 60, md: 'none' } }}
+                        >
+                          {winner.twitterUsername}
+                        </TableCell>
+                        <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.completedLevels}</TableCell>
+                        <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.reward}</TableCell>
                       </TableRow>
                     ))
                   }
@@ -96,8 +103,9 @@ export default function LeaderboardSection({ bgcolor, id }) {
                     <TableCell align="center">Rank</TableCell>
                     <TableCell align="center">Wallet address</TableCell>
                     <TableCell align="center">Telegram username</TableCell>
-                    <TableCell align="center">Twitter username</TableCell>
+                    <TableCell align="center" sx={{ display: { xs: 'none', md: 'block' } }}>Twitter username</TableCell>
                     <TableCell align="center">Completed Levels</TableCell>
+                    <TableCell align="center">Reward</TableCell>
                   </TableRow>
                 </TableHead>
 
@@ -105,19 +113,23 @@ export default function LeaderboardSection({ bgcolor, id }) {
                   {
                     WINNERS.map(winner => (
                       <TableRow key={winner.rank}>
-                        <TableCell align="center">{winner.rank}</TableCell>
-                        <TableCell align="center">{winner.walletAddress}</TableCell>
-                        <TableCell align="center">{winner.telegramUsername}</TableCell>
-                        <TableCell align="center">{winner.twitterUsername}</TableCell>
-                        <TableCell align="center">{winner.completedLevels}</TableCell>
+                        <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.rank}</TableCell>
+                        <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.walletAddress}</TableCell>
+                        <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.telegramUsername}</TableCell>
+                        <TableCell
+                          align="center"
+                          sx={{ display: { xs: 'none', md: 'block' }, maxWidth: { xs: 60, md: 'none' } }}
+                        >
+                          {winner.twitterUsername}
+                        </TableCell>
+                        <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.completedLevels}</TableCell>
+                        <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.reward}</TableCell>
                       </TableRow>
                     ))
                   }
                 </TableBody>
               </Table>
             </SecondaryTableContainer>
-
-
           </PrimaryCard>
         </MotionDiv>
       </Container>
