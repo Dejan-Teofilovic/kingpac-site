@@ -15,4 +15,5 @@ May 26, 2022
 ## How to run the game.
 1. Please open terminal window in the root directory.
 2. Please run command `npm run start` in it.
+
 ![guide-terminal](guide-terminal.png)
