@@ -30,8 +30,7 @@ export default function DialogAlert({ open, handleClose }) {
       <DialogContent sx={{ bgcolor: COLOR_PRIMARY }}>
         {/* <DialogContentText> */}
         <Typography gutterBottom fontFamily={FONT_AMARANTH} color={grey[900]}>
-          In order to play the game you need to hold 1Million KingPac token.<br />
-          You wallet doesn’t have 1 million KingPac token so you aren’t eligible to play.<br />
+          You need to hold 1,000,000 Kingpac token to play the game.<br />
           <b>
             <Link target="_blank" href="https://pancakeswap.finance/" sx={{ color: 'black', textDecoration: 'none' }}>
               Buy token.
