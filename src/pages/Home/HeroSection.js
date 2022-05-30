@@ -9,7 +9,9 @@ import {
   TOKEN_AMOUNT,
   SCAN_API_KEY,
   VAR_FADE_IN_UP,
-  VAR_FADE_IN_DOWN
+  VAR_FADE_IN_DOWN,
+  URL_GAME_SITE,
+  WARNING
 } from '../../utils/constants';
 import { PrimaryButton } from '../../components/styledComponents';
 import DialogAlert from '../../components/DialogAlert';
@@ -18,11 +20,13 @@ import useAlertMessage from '../../hooks/useAlertMessage';
 import useLoading from '../../hooks/useLoading';
 import DialogUserRegister from '../../components/DialogUserRegister';
 import MotionDiv from '../../components/MotionDiv';
+import useUser from '../../hooks/useUser';
 
 export default function HeroSection() {
   const { currentAccount, walletConnected } = useWallet();
   const { openAlert } = useAlertMessage();
   const { openLoading, closeLoading } = useLoading();
+  const { currentUserdata, updateBalance } = useUser();
 
   const [dialogAlertOpened, setDialogAlertOpened] = useState(false);
   const [dialogUserRegisterOpened, setDialogUserRegisterOpened] = useState(false);
@@ -43,15 +47,20 @@ export default function HeroSection() {
 
   const handleOpenDialog = async () => {
     if (walletConnected) {
-      const balance = await getBalance();
-      console.log('# balance => ', balance);
-      if (balance < TOKEN_AMOUNT) {
-        setDialogAlertOpened(true);
+      if (currentUserdata) {
+        const balance = await getBalance();
+        console.log('# balance => ', balance);
+        await updateBalance(currentUserdata.idWalletAddress, balance);
+        if (balance > TOKEN_AMOUNT) {
+          setDialogAlertOpened(true);
+        } else {
+          window.location.replace(URL_GAME_SITE);
+        }
       } else {
         setDialogUserRegisterOpened(true);
       }
     } else {
-      openAlert({ severity: 'warning', message: 'Please connect wallet.' });
+      openAlert({ severity: WARNING, message: 'Please connect wallet.' });
     }
   };
 

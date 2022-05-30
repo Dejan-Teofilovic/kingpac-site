@@ -386,10 +386,6 @@ export const FONT_AMARANTH = "'Amaranth', sans-serif";
 // Colors
 export const COLOR_PRIMARY = '#eec51e';
 
-//  Moralis
-export const MORALIS_SERVER_URL = 'https://beim52fyzlek.usemoralis.com:2053/server';
-export const MORALIS_APP_ID = 'zZXNShFa8zHpRKDgaOLBV3FBTMKkMtXPLuUyNgfa'; //  For env
-
 export const WALLET_CONNECT_INFURA_ID = '8cf3cad623da43f9a84ab5ac94230cf6';
 
 export const TOKEN_CONTRACT_ADDRESS = '0xe705c3f34bbf38e1e298b65a7668fd5d9cdc0816';
@@ -398,7 +394,7 @@ export const SCAN_API_KEY = 'MQPQP1JFJXGA72RYM5SRSR45YBDBZ7ADXX';  //  For env B
 
 export const TOKEN_AMOUNT = 1000000;
 
-export const COMMUNITY_TELEGRAM_URL = 'https://t.me/KingPacToken';
+
 
 //  Severities
 export const SUCCESS = 'success';
@@ -410,7 +406,11 @@ export const STRING = 'string';
 //  Messages
 export const MESSAGE_SERVER_ERROR = 'Sorry. The server has some problem. Please try again in a few min.';
 export const MESSAGE_WALLET_CONNECT_ERROR = 'A problem is occured in the connecting of your wallet. Please try again in a few min.';
+export const MESSAGE_USER_REGISTER_SUCCESS = 'Success! You are registered.';
 
-export const BACKEND_API = 'http://localhost:5000/api';
+//  Urls
+export const URL_TELEGRAM_COMMUNITY = 'https://t.me/KingPacToken';
+export const URL_GAME_SITE = 'https://p2e.kingpactoken.com';
+export const URL_BACKEND_API = 'http://localhost:5000/api';
 
 export const LOCALSTORAGE_USERDATA = 'kingpacUserdata';

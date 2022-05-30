@@ -21,3 +21,11 @@ export const setItemOfLocalStorage = (name = 'x', data = 'x') => {
 export const getItemOfLocalStorage = (name = 'x') => {
   return JSON.parse(localStorage.getItem(name));
 };
+
+/**
+ * localStorage.removeItem()
+ * @param {string} name The name of item
+ */
+export const removeItemOfLocalStorage = (name = 'x') => {
+  localStorage.removeItem(name);
+};

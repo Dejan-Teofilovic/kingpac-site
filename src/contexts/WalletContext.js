@@ -4,11 +4,13 @@ import WalletConnectProvider from '@walletconnect/web3-provider';
 import { ethers } from 'ethers';
 import {
   ERROR,
+  LOCALSTORAGE_USERDATA,
   MESSAGE_WALLET_CONNECT_ERROR,
   WALLET_CONNECT_INFURA_ID,
 } from '../utils/constants';
 import { AlertMessageContext } from './AlertMessageContext';
 import { UserContext } from './UserContext';
+import { removeItemOfLocalStorage } from '../utils/functions';
 
 // ----------------------------------------------------------------------
 
@@ -71,9 +73,9 @@ function WalletProvider({ children }) {
     return web3Modal;
   };
 
+  /** Connect wallet */
   const connectWallet = async () => {
     try {
-      /* ================== Wallet Connect =================== */
       const web3Modal = await getWeb3Modal();
       const connection = await web3Modal.connect();
       const provider = new ethers.providers.Web3Provider(connection);
@@ -97,7 +99,6 @@ function WalletProvider({ children }) {
         type: 'SET_PROVIDER',
         payload: provider
       });
-      /* ===================================================== */
     } catch (error) {
       console.log('# wallet connect error', error);
       openAlert({
@@ -107,6 +108,7 @@ function WalletProvider({ children }) {
     }
   };
 
+  /** Disconnect wallet */
   const disconnectWallet = async () => {
     dispatch({
       type: 'SET_CURRENT_ACCOUNT',
@@ -122,6 +124,7 @@ function WalletProvider({ children }) {
       type: 'SET_PROVIDER',
       payload: null
     });
+    removeItemOfLocalStorage(LOCALSTORAGE_USERDATA);
   };
 
   return (

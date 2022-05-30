@@ -1,6 +1,12 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import api from '../utils/api';
-import { ERROR, LOCALSTORAGE_USERDATA, MESSAGE_SERVER_ERROR, SUCCESS } from '../utils/constants';
+import {
+  ERROR,
+  LOCALSTORAGE_USERDATA,
+  MESSAGE_SERVER_ERROR,
+  MESSAGE_USER_REGISTER_SUCCESS,
+  SUCCESS
+} from '../utils/constants';
 import { setItemOfLocalStorage } from '../utils/functions';
 import { AlertMessageContext } from './AlertMessageContext';
 
@@ -41,7 +47,8 @@ const UserContext = createContext({
   ...initialState,
   getUserdata: () => Promise.resolve(),
   getWinners: () => Promise.resolve(),
-  registerUser: () => Promise.resolve()
+  registerUser: () => Promise.resolve(),
+  updateBalance: () => Promise.resolve()
 });
 
 //  Provider
@@ -84,6 +91,10 @@ function UserProvider({ children }) {
           payload: res.data
         });
         setItemOfLocalStorage(LOCALSTORAGE_USERDATA, res.data);
+        openAlert({
+          severity: SUCCESS,
+          message: MESSAGE_USER_REGISTER_SUCCESS
+        });
       })
       .catch(error => {
         console.log(error.status);
@@ -94,9 +105,7 @@ function UserProvider({ children }) {
       });
   };
 
-  /**
-   * Get winners of this week and last one.
-   */
+  /** Get winners of this week and last one. */
   const getWinners = () => {
     api.get('/site/getWinners')
       .then(res => {
@@ -119,13 +128,38 @@ function UserProvider({ children }) {
       });
   };
 
+  /**
+   * Update balance of current user
+   * @param {number} idWalletAddress The user's "id_wallet_address"
+   * @param {number} balance The user's current balance
+   */
+  const updateBalance = (idWalletAddress, balance) => {
+    api.put(`/site/updateBalance/${idWalletAddress}`, { balance })
+      .then(() => {
+        const newCurrentUserdata = { ...state.currentUserdata, balance };
+        dispatch({
+          type: 'SET_CURRENT_USERDATA',
+          payload: newCurrentUserdata
+        });
+        setItemOfLocalStorage(LOCALSTORAGE_USERDATA, newCurrentUserdata);
+      })
+      .catch(error => {
+        console.log(error.status);
+        openAlert({
+          severity: ERROR,
+          message: MESSAGE_SERVER_ERROR
+        });
+      });
+  };
+
   return (
     <UserContext.Provider
       value={{
         ...state,
         getUserdata,
         getWinners,
-        registerUser
+        registerUser,
+        updateBalance
       }}
     >
       {children}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Container, Link, Stack, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
-import { COMMUNITY_TELEGRAM_URL, FONT_AMARANTH, FONT_RIGHTEOUS, VAR_FADE_IN_UP, VAR_FADE_IN_DOWN } from '../../utils/constants';
+import { URL_TELEGRAM_COMMUNITY, FONT_AMARANTH, FONT_RIGHTEOUS, VAR_FADE_IN_UP, VAR_FADE_IN_DOWN } from '../../utils/constants';
 import { PrimaryButton } from '../../components/styledComponents';
 import MotionDiv from '../../components/MotionDiv';
 
@@ -33,7 +33,7 @@ export default function CommunitySection() {
             <PrimaryButton
               sx={{ fontSize: { xs: 14, md: 18 }, px: 4 }}
               component={Link}
-              href={COMMUNITY_TELEGRAM_URL}
+              href={URL_TELEGRAM_COMMUNITY}
               target="_blank"
             >
               Join our Telegram channel
