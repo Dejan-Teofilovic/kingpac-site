@@ -19,11 +19,7 @@ import { FONT_RIGHTEOUS, VAR_FADE_IN_UP } from '../../utils/constants';
 import useUser from '../../hooks/useUser';
 
 export default function LeaderboardSection({ bgcolor, id }) {
-  const { getWinners, winnersOfThisWeek, winnersOfLastWeek } = useUser();
-
-  useState(() => {
-    getWinners();
-  }, []);
+  const { winnersOfThisWeek, winnersOfLastWeek } = useUser();
 
   return (
     <Box bgcolor={bgcolor} py={8} id={id}>

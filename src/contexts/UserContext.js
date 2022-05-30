@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useReducer, useState } from 'react';
 import api from '../utils/api';
 import {
   ERROR,
@@ -55,6 +55,12 @@ const UserContext = createContext({
 function UserProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { openAlert } = useContext(AlertMessageContext);
+
+  useState(() => {
+    (async () => {
+      await getWinners();
+    })();
+  }, []);
 
   /**
    * Fetch userdata from server.
