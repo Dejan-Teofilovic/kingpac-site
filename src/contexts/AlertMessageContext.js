@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from 'react';
+import { SUCCESS } from '../utils/constants';
 // ----------------------------------------------------------------------
 
 const initialState = {
@@ -75,7 +76,7 @@ function AlertMessageProvider({ children }) {
       type: 'INITIALIZE',
       payload: {
         isOpened: false,
-        severity: '',
+        severity: SUCCESS,
         message: ''
       }
     });

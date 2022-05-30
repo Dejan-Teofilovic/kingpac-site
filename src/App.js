@@ -14,13 +14,13 @@ function App() {
     <ThemeProvider theme={theme}>
       <LoadingProvider>
         <AlertMessageProvider>
-          <WalletProvider>
-            <UserProvider>
+          <UserProvider>
+            <WalletProvider>
               <Router>
                 <Routes />
               </Router>
-            </UserProvider>
-          </WalletProvider>
+            </WalletProvider>
+          </UserProvider>
         </AlertMessageProvider>
       </LoadingProvider>
     </ThemeProvider>

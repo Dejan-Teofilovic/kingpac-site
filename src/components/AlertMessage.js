@@ -20,7 +20,7 @@ export default function AlertMessage() {
       onClose={handleClose}
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
     >
-      <Alert variant="filled" onClose={handleClose} severity={severity} sx={{ width: '100%', color: 'white' }}>
+      <Alert variant="filled" onClose={handleClose} severity={severity} sx={{ width: '100%', color: 'white', display: isOpened ? 'flex' : 'none' }}>
         {message}
       </Alert>
     </Snackbar>

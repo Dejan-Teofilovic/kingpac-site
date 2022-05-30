@@ -38,7 +38,7 @@ const reducer = (state, action) =>
 //  Context
 const UserContext = createContext({
   ...initialState,
-  getCurrentUserdata: () => Promise.resolve(),
+  getUserdata: () => Promise.resolve(),
   getWinners: () => Promise.resolve()
 });
 
@@ -46,8 +46,9 @@ const UserContext = createContext({
 function UserProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { openAlert } = useContext(AlertMessageContext);
-
-  const getCurrentUserdata = (walletAddress) => {
+  
+  const getUserdata = (walletAddress) => {
+    console.log('# walletAddress => ', walletAddress);
     api.get(`/site/getUserdata/${walletAddress}`)
       .then(res => {
         console.log('# res => ', res);
@@ -73,7 +74,7 @@ function UserProvider({ children }) {
     <UserContext.Provider
       value={{
         ...state,
-        getCurrentUserdata,
+        getUserdata,
         getWinners
       }}
     >

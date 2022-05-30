@@ -1,17 +1,14 @@
-import
-React,
-{
-  createContext,
-  useReducer
-}
-  from 'react';
+import React, { createContext, useContext, useReducer } from 'react';
 import Web3Modal from 'web3modal';
 import WalletConnectProvider from '@walletconnect/web3-provider';
 import { ethers } from 'ethers';
 import {
+  ERROR,
+  MESSAGE_WALLET_CONNECT_ERROR,
   WALLET_CONNECT_INFURA_ID,
 } from '../utils/constants';
-// import { AlertMessageContext } from './AlertMessageContext';
+import { AlertMessageContext } from './AlertMessageContext';
+import { UserContext } from './UserContext';
 
 // ----------------------------------------------------------------------
 
@@ -55,7 +52,8 @@ const WalletContext = createContext({
 //  Provider
 function WalletProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  // const { openAlert } = useContext(AlertMessageContext);
+  const { openAlert } = useContext(AlertMessageContext);
+  const { getUserdata } = useContext(UserContext);
 
   const getWeb3Modal = async () => {
     const web3Modal = new Web3Modal({
@@ -74,25 +72,39 @@ function WalletProvider({ children }) {
   };
 
   const connectWallet = async () => {
-    const web3Modal = await getWeb3Modal();
-    const connection = await web3Modal.connect();
-    const provider = new ethers.providers.Web3Provider(connection);
+    try {
+      /* ================== Wallet Connect =================== */
+      const web3Modal = await getWeb3Modal();
+      const connection = await web3Modal.connect();
+      const provider = new ethers.providers.Web3Provider(connection);
 
-    const accounts = await provider.listAccounts();
-    dispatch({
-      type: 'SET_CURRENT_ACCOUNT',
-      payload: accounts[0]
-    });
+      const accounts = await provider.listAccounts();
 
-    dispatch({
-      type: 'SET_WALLET_CONNECTED',
-      payload: true
-    });
+      //  Fetch current userdata
+      await getUserdata(accounts[0]);
 
-    dispatch({
-      type: 'SET_PROVIDER',
-      payload: provider
-    });
+      dispatch({
+        type: 'SET_CURRENT_ACCOUNT',
+        payload: accounts[0]
+      });
+
+      dispatch({
+        type: 'SET_WALLET_CONNECTED',
+        payload: true
+      });
+
+      dispatch({
+        type: 'SET_PROVIDER',
+        payload: provider
+      });
+      /* ===================================================== */
+    } catch (error) {
+      console.log('# wallet connect error', error);
+      openAlert({
+        severity: ERROR,
+        message: MESSAGE_WALLET_CONNECT_ERROR
+      });
+    }
   };
 
   const disconnectWallet = async () => {
