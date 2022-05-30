@@ -46,12 +46,15 @@ const UserContext = createContext({
 function UserProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { openAlert } = useContext(AlertMessageContext);
-  
+
+  /**
+   * Fetch userdata from server.
+   * @param {*} walletAddress The address of connected wallet
+   */
   const getUserdata = (walletAddress) => {
     console.log('# walletAddress => ', walletAddress);
     api.get(`/site/getUserdata/${walletAddress}`)
       .then(res => {
-        console.log('# res => ', res);
         dispatch({
           type: 'SET_CURRENT_USERDATA',
           payload: res.data
@@ -67,7 +70,25 @@ function UserProvider({ children }) {
   };
 
   const getWinners = () => {
-
+    api.get('/site/getWinners')
+      .then(res => {
+        console.log('# res => ', res);
+        dispatch({
+          type: 'SET_WINNERS_OF_THIS_WEEK',
+          payload: res.data.winnersOfThisWeek
+        });
+        dispatch({
+          type: 'SET_WINNERS_OF_LAST_WEEK',
+          payload: res.data.winnersOfLastWeek
+        });
+      })
+      .catch(error => {
+        console.log(error.status);
+        openAlert({
+          severity: ERROR,
+          message: MESSAGE_SERVER_ERROR
+        });
+      });
   };
 
   return (

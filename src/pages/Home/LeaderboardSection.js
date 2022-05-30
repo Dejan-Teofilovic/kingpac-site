@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   CardHeader,
@@ -15,8 +15,16 @@ import { grey } from '@mui/material/colors';
 import MotionDiv from '../../components/MotionDiv';
 import { PrimaryCard, SecondaryTableContainer } from '../../components/styledComponents';
 import { FONT_RIGHTEOUS, VAR_FADE_IN_UP, WINNERS } from '../../utils/constants';
+import useUser from '../../hooks/useUser';
+import NoData from '../../components/NoData';
 
 export default function LeaderboardSection({ bgcolor, id }) {
+  const { getWinners, winnersOfThisWeek, winnersOfLastWeek } = useUser();
+
+  useState(() => {
+    getWinners();
+  }, []);
+
   return (
     <Box bgcolor={bgcolor} py={8} id={id}>
       <Container maxWidth="lg">
@@ -58,26 +66,33 @@ export default function LeaderboardSection({ bgcolor, id }) {
                   </TableRow>
                 </TableHead>
 
-                <TableBody>
-                  {
-                    WINNERS.map(winner => (
-                      <TableRow key={winner.rank}>
-                        <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.rank}</TableCell>
-                        <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.walletAddress}</TableCell>
-                        <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.telegramUsername}</TableCell>
-                        <TableCell
-                          align="center"
-                          sx={{ display: { xs: 'none', md: 'block' }, maxWidth: { xs: 60, md: 'none' } }}
-                        >
-                          {winner.twitterUsername}
-                        </TableCell>
-                        <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.completedLevels}</TableCell>
-                        <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.reward}</TableCell>
-                      </TableRow>
-                    ))
-                  }
-                </TableBody>
+                {
+                  winnersOfThisWeek.length > 0 && (
+                    <TableBody>
+                      {
+                        winnersOfThisWeek.map(winner => (
+                          <TableRow key={winner.rank}>
+                            <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.rank}</TableCell>
+                            <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.walletAddress}</TableCell>
+                            <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.telegramUsername}</TableCell>
+                            <TableCell
+                              align="center"
+                              sx={{ display: { xs: 'none', md: 'block' }, maxWidth: { xs: 60, md: 'none' } }}
+                            >
+                              {winner.twitterUsername}
+                            </TableCell>
+                            <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.completedLevels}</TableCell>
+                            <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.reward}</TableCell>
+                          </TableRow>
+                        ))
+                      }
+                    </TableBody>
+                  )
+                }
               </Table>
+              {
+                winnersOfThisWeek.length === 0 && (<NoData />)
+              }
             </SecondaryTableContainer>
           </PrimaryCard>
         </MotionDiv>
@@ -109,26 +124,33 @@ export default function LeaderboardSection({ bgcolor, id }) {
                   </TableRow>
                 </TableHead>
 
-                <TableBody>
-                  {
-                    WINNERS.map(winner => (
-                      <TableRow key={winner.rank}>
-                        <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.rank}</TableCell>
-                        <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.walletAddress}</TableCell>
-                        <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.telegramUsername}</TableCell>
-                        <TableCell
-                          align="center"
-                          sx={{ display: { xs: 'none', md: 'block' }, maxWidth: { xs: 60, md: 'none' } }}
-                        >
-                          {winner.twitterUsername}
-                        </TableCell>
-                        <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.completedLevels}</TableCell>
-                        <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.reward}</TableCell>
-                      </TableRow>
-                    ))
-                  }
-                </TableBody>
+                {
+                  winnersOfLastWeek.length > 0 && (
+                    <TableBody>
+                      {
+                        winnersOfLastWeek.map(winner => (
+                          <TableRow key={winner.rank}>
+                            <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.rank}</TableCell>
+                            <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.walletAddress}</TableCell>
+                            <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.telegramUsername}</TableCell>
+                            <TableCell
+                              align="center"
+                              sx={{ display: { xs: 'none', md: 'block' }, maxWidth: { xs: 60, md: 'none' } }}
+                            >
+                              {winner.twitterUsername}
+                            </TableCell>
+                            <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.completedLevels}</TableCell>
+                            <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.reward}</TableCell>
+                          </TableRow>
+                        ))
+                      }
+                    </TableBody>
+                  )
+                }
               </Table>
+              {
+                winnersOfLastWeek.length === 0 && (<NoData />)
+              }
             </SecondaryTableContainer>
           </PrimaryCard>
         </MotionDiv>
