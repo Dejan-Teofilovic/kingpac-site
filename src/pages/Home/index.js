@@ -1,4 +1,4 @@
-import React, { createElement } from 'react';
+import React, { createElement, useState } from 'react';
 import AboutUsSection from './AboutUsSection';
 import CommunitySection from './CommunitySection';
 import FaqSection from './FaqSection';
@@ -8,6 +8,7 @@ import LeaderboardSection from './LeaderboardSection';
 import OurTeamSection from './OurTeamSection';
 import PolicySection from './PolicySection';
 import RoadmapSection from './RoadmapSection';
+import useUser from '../../hooks/useUser';
 
 const SECTIONS = [
   {
@@ -41,6 +42,12 @@ const SECTIONS = [
 ];
 
 export default function Home() {
+  const { getWinners } = useUser();
+
+  useState(() => {
+    getWinners();
+  }, []);
+  
   return (
     <>
       <HeroSection />

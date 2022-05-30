@@ -56,12 +56,6 @@ function UserProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { openAlert } = useContext(AlertMessageContext);
 
-  useState(() => {
-    (async () => {
-      await getWinners();
-    })();
-  }, []);
-
   /**
    * Fetch userdata from server.
    * @param {*} walletAddress The address of connected wallet
