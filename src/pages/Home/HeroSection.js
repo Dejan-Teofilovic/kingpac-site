@@ -33,11 +33,11 @@ export default function HeroSection() {
       const { result } = await (await fetch(`https://api.bscscan.com/api?module=account&action=tokenbalance&contractaddress=${TOKEN_CONTRACT_ADDRESS}&address=${currentAccount}&tag=latest&apikey=${SCAN_API_KEY}`)).json();
       closeLoading();
       return Number(result);
-    } catch(error) {
+    } catch (error) {
       openAlert({
         severity: 'error',
         message: 'Network error. Please try again.'
-      })
+      });
     }
   };
 

@@ -39,7 +39,7 @@ export default function TopNavbar() {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: 'rgba(0, 0, 0, 0)', py: 3 }}>
+    <AppBar position="static" sx={{ backgroundColor: 'rgba(0, 0, 0, 0)', py: 2 }}>
       <Container maxWidth="xl">
         <Toolbar>
           {/* For Mobile */}
@@ -83,7 +83,7 @@ export default function TopNavbar() {
 
           {/* Logo for desktop */}
           <Button component={RouterLink} to="/" sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <Box component="img" src="/assets/images/logo.png" width={70} ml={1} />
+            <Box component="img" src="/assets/images/logo.png" width={50} ml={1} />
           </Button>
 
           <Box flexGrow={1}>

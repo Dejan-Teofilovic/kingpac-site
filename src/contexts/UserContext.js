@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import api from '../utils/api';
-import { ERROR, MESSAGE_SERVER_ERROR, SUCCESS } from '../utils/constants';
+import { ERROR, LOCALSTORAGE_USERDATA, MESSAGE_SERVER_ERROR, SUCCESS } from '../utils/constants';
+import { setItemOfLocalStorage } from '../utils/functions';
 import { AlertMessageContext } from './AlertMessageContext';
 
 // ----------------------------------------------------------------------
@@ -39,7 +40,8 @@ const reducer = (state, action) =>
 const UserContext = createContext({
   ...initialState,
   getUserdata: () => Promise.resolve(),
-  getWinners: () => Promise.resolve()
+  getWinners: () => Promise.resolve(),
+  registerUser: () => Promise.resolve()
 });
 
 //  Provider
@@ -59,6 +61,7 @@ function UserProvider({ children }) {
           type: 'SET_CURRENT_USERDATA',
           payload: res.data
         });
+        setItemOfLocalStorage(LOCALSTORAGE_USERDATA, res.data);
       })
       .catch(error => {
         console.log(error.status);
@@ -69,6 +72,31 @@ function UserProvider({ children }) {
       });
   };
 
+  /**
+   * Register a user
+   * @param {object} userdata The data of a new user
+   */
+  const registerUser = (userdata) => {
+    api.post('/site/registerUser', userdata)
+      .then(res => {
+        dispatch({
+          type: 'SET_CURRENT_USERDATA',
+          payload: res.data
+        });
+        setItemOfLocalStorage(LOCALSTORAGE_USERDATA, res.data);
+      })
+      .catch(error => {
+        console.log(error.status);
+        openAlert({
+          severity: ERROR,
+          message: MESSAGE_SERVER_ERROR
+        });
+      });
+  };
+
+  /**
+   * Get winners of this week and last one.
+   */
   const getWinners = () => {
     api.get('/site/getWinners')
       .then(res => {
@@ -96,7 +124,8 @@ function UserProvider({ children }) {
       value={{
         ...state,
         getUserdata,
-        getWinners
+        getWinners,
+        registerUser
       }}
     >
       {children}

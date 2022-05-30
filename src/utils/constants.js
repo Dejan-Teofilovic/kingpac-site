@@ -405,9 +405,12 @@ export const SUCCESS = 'success';
 export const WARNING = 'warning';
 export const INFO = 'info';
 export const ERROR = 'error';
+export const STRING = 'string';
 
 //  Messages
 export const MESSAGE_SERVER_ERROR = 'Sorry. The server has some problem. Please try again in a few min.';
 export const MESSAGE_WALLET_CONNECT_ERROR = 'A problem is occured in the connecting of your wallet. Please try again in a few min.';
 
 export const BACKEND_API = 'http://localhost:5000/api';
+
+export const LOCALSTORAGE_USERDATA = 'kingpacUserdata';

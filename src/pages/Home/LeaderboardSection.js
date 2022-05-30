@@ -13,10 +13,10 @@ import {
 } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import MotionDiv from '../../components/MotionDiv';
-import { PrimaryCard, SecondaryTableContainer } from '../../components/styledComponents';
-import { FONT_RIGHTEOUS, VAR_FADE_IN_UP, WINNERS } from '../../utils/constants';
-import useUser from '../../hooks/useUser';
 import NoData from '../../components/NoData';
+import { PrimaryCard, SecondaryTableContainer } from '../../components/styledComponents';
+import { FONT_RIGHTEOUS, VAR_FADE_IN_UP } from '../../utils/constants';
+import useUser from '../../hooks/useUser';
 
 export default function LeaderboardSection({ bgcolor, id }) {
   const { getWinners, winnersOfThisWeek, winnersOfLastWeek } = useUser();
