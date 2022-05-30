@@ -5,6 +5,7 @@ import { WalletProvider } from './contexts/WalletContext';
 import { LoadingProvider } from './contexts/LoadingContext';
 import Routes from './Routes';
 import { createTheme, ThemeProvider } from '@mui/material';
+import { UserProvider } from './contexts/UserContext';
 
 const theme = createTheme({});
 
@@ -14,9 +15,11 @@ function App() {
       <LoadingProvider>
         <AlertMessageProvider>
           <WalletProvider>
-            <Router>
-              <Routes />
-            </Router>
+            <UserProvider>
+              <Router>
+                <Routes />
+              </Router>
+            </UserProvider>
           </WalletProvider>
         </AlertMessageProvider>
       </LoadingProvider>

@@ -1,5 +1,7 @@
-import React, { createContext, useReducer } from 'react';
-// import { AlertMessageContext } from './AlertMessageContext';
+import React, { createContext, useContext, useReducer } from 'react';
+import api from '../utils/api';
+import { ERROR, MESSAGE_SERVER_ERROR, SUCCESS } from '../utils/constants';
+import { AlertMessageContext } from './AlertMessageContext';
 
 // ----------------------------------------------------------------------
 
@@ -43,10 +45,24 @@ const UserContext = createContext({
 //  Provider
 function UserProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  // const { openAlert } = useContext(AlertMessageContext);
+  const { openAlert } = useContext(AlertMessageContext);
 
-  const getCurrentUserdata = () => {
-
+  const getCurrentUserdata = (walletAddress) => {
+    api.get(`/site/getUserdata/${walletAddress}`)
+      .then(res => {
+        console.log('# res => ', res);
+        dispatch({
+          type: 'SET_CURRENT_USERDATA',
+          payload: res.data
+        });
+      })
+      .catch(error => {
+        console.log(error.status);
+        openAlert({
+          severity: ERROR,
+          message: MESSAGE_SERVER_ERROR
+        });
+      });
   };
 
   const getWinners = () => {
