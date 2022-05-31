@@ -6,7 +6,7 @@ import {
   ERROR,
   LOCALSTORAGE_USERDATA,
   MESSAGE_WALLET_CONNECT_ERROR,
-  WALLET_CONNECT_INFURA_ID,
+  WALLET_CONNECT_INFURA_ID
 } from '../utils/constants';
 import { AlertMessageContext } from './AlertMessageContext';
 import { UserContext } from './UserContext';
@@ -17,6 +17,7 @@ import { removeItemOfLocalStorage } from '../utils/functions';
 const initialState = {
   walletConnected: false,
   currentAccount: '',
+  balance: 0,
   provider: null
 };
 
@@ -31,6 +32,12 @@ const handlers = {
     return {
       ...state,
       currentAccount: action.payload
+    };
+  },
+  SET_BALANCE: (state, action) => {
+    return {
+      ...state,
+      balance: action.payload
     };
   },
   SET_PROVIDER: (state, action) => {
@@ -48,7 +55,8 @@ const reducer = (state, action) =>
 const WalletContext = createContext({
   ...initialState,
   connectWallet: () => Promise.resolve(),
-  disconnectWallet: () => Promise.resolve()
+  disconnectWallet: () => Promise.resolve(),
+  setBalance: () => Promise.resolve()
 });
 
 //  Provider
@@ -81,6 +89,7 @@ function WalletProvider({ children }) {
       const provider = new ethers.providers.Web3Provider(connection);
 
       const accounts = await provider.listAccounts();
+      console.log('# accounts => ', accounts);
 
       //  Fetch current userdata
       await getUserdata(accounts[0]);
@@ -124,7 +133,23 @@ function WalletProvider({ children }) {
       type: 'SET_PROVIDER',
       payload: null
     });
+
+    dispatch({
+      type: 'SET_BALANCE',
+      payload: 0
+    });
     removeItemOfLocalStorage(LOCALSTORAGE_USERDATA);
+  };
+
+  /**
+   * Set balance
+   * @param {number} balance The current balance of connected wallet
+   */
+  const setBalance = (balance) => {
+    dispatch({
+      type: 'SET_BALANCE',
+      payload: balance
+    });
   };
 
   return (
@@ -132,7 +157,8 @@ function WalletProvider({ children }) {
       value={{
         ...state,
         connectWallet,
-        disconnectWallet
+        disconnectWallet,
+        setBalance
       }}
     >
       {children}

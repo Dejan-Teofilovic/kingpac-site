@@ -23,7 +23,7 @@ import MotionDiv from '../../components/MotionDiv';
 import useUser from '../../hooks/useUser';
 
 export default function HeroSection() {
-  const { currentAccount, walletConnected } = useWallet();
+  const { currentAccount, walletConnected, setBalance } = useWallet();
   const { openAlert } = useAlertMessage();
   const { openLoading, closeLoading } = useLoading();
   const { currentUserdata, updateBalance } = useUser();
@@ -47,9 +47,9 @@ export default function HeroSection() {
 
   const handleOpenDialog = async () => {
     if (walletConnected) {
+      const balance = await getBalance();
+      setBalance(balance);
       if (currentUserdata) {
-        const balance = await getBalance();
-        console.log('# balance => ', balance);
         await updateBalance(currentUserdata.idWalletAddress, balance);
         if (balance > TOKEN_AMOUNT) {
           setDialogAlertOpened(true);

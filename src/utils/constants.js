@@ -407,6 +407,7 @@ export const STRING = 'string';
 export const MESSAGE_SERVER_ERROR = 'Sorry. The server has some problem. Please try again in a few min.';
 export const MESSAGE_WALLET_CONNECT_ERROR = 'A problem is occured in the connecting of your wallet. Please try again in a few min.';
 export const MESSAGE_USER_REGISTER_SUCCESS = 'Success! You are registered.';
+export const MESSAGE_USER_NOT_REGISTERED = "You aren't registered in our site. To play the game, please click \"Play Game\" button to be registered."
 
 //  Urls
 export const URL_TELEGRAM_COMMUNITY = 'https://t.me/KingPacToken';

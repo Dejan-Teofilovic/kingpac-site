@@ -2,10 +2,13 @@ import React, { createContext, useContext, useReducer, useState } from 'react';
 import api from '../utils/api';
 import {
   ERROR,
+  INFO,
   LOCALSTORAGE_USERDATA,
   MESSAGE_SERVER_ERROR,
+  MESSAGE_USER_NOT_REGISTERED,
   MESSAGE_USER_REGISTER_SUCCESS,
-  SUCCESS
+  SUCCESS,
+  WARNING
 } from '../utils/constants';
 import { setItemOfLocalStorage } from '../utils/functions';
 import { AlertMessageContext } from './AlertMessageContext';
@@ -61,7 +64,6 @@ function UserProvider({ children }) {
    * @param {*} walletAddress The address of connected wallet
    */
   const getUserdata = (walletAddress) => {
-    console.log('# walletAddress => ', walletAddress);
     api.get(`/site/getUserdata/${walletAddress}`)
       .then(res => {
         dispatch({
@@ -71,11 +73,17 @@ function UserProvider({ children }) {
         setItemOfLocalStorage(LOCALSTORAGE_USERDATA, res.data);
       })
       .catch(error => {
-        console.log(error.status);
-        openAlert({
-          severity: ERROR,
-          message: MESSAGE_SERVER_ERROR
-        });
+        if (error.response.status === 404) {
+          openAlert({
+            severity: INFO,
+            message: MESSAGE_USER_NOT_REGISTERED
+          });
+        } else {
+          openAlert({
+            severity: ERROR,
+            message: MESSAGE_SERVER_ERROR
+          });
+        }
       });
   };
 
