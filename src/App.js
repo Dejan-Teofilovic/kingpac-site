@@ -6,6 +6,8 @@ import { LoadingProvider } from './contexts/LoadingContext';
 import Routes from './Routes';
 import { createTheme, ThemeProvider } from '@mui/material';
 import { UserProvider } from './contexts/UserContext';
+import Loading from './components/Loading';
+import AlertMessage from './components/AlertMessage';
 
 const theme = createTheme({});
 
@@ -18,6 +20,8 @@ function App() {
             <WalletProvider>
               <Router>
                 <Routes />
+                <Loading />
+                <AlertMessage />
               </Router>
             </WalletProvider>
           </UserProvider>

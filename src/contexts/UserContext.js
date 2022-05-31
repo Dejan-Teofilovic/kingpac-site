@@ -13,6 +13,7 @@ import {
 } from '../utils/constants';
 import { setItemOfLocalStorage } from '../utils/functions';
 import { AlertMessageContext } from './AlertMessageContext';
+import { LoadingContext } from './LoadingContext';
 
 // ----------------------------------------------------------------------
 
@@ -59,12 +60,14 @@ const UserContext = createContext({
 function UserProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { openAlert } = useContext(AlertMessageContext);
+  const { openLoading, closeLoading } = useContext(LoadingContext);
 
   /**
    * Fetch userdata from server.
    * @param {*} walletAddress The address of connected wallet
    */
   const getUserdata = (walletAddress) => {
+    openLoading();
     api.get(`/site/getUserdata/${walletAddress}`)
       .then(res => {
         dispatch({
@@ -72,6 +75,7 @@ function UserProvider({ children }) {
           payload: res.data
         });
         setItemOfLocalStorage(LOCALSTORAGE_USERDATA, res.data);
+        closeLoading();
       })
       .catch(error => {
         if (error.response.status === 404) {
@@ -85,6 +89,7 @@ function UserProvider({ children }) {
             message: MESSAGE_SERVER_ERROR
           });
         }
+        closeLoading();
       });
   };
 
@@ -93,6 +98,7 @@ function UserProvider({ children }) {
    * @param {object} userdata The data of a new user
    */
   const registerUser = (userdata) => {
+    openLoading();
     api.post('/site/registerUser', userdata)
       .then(res => {
         dispatch({
@@ -104,6 +110,7 @@ function UserProvider({ children }) {
           severity: SUCCESS,
           message: MESSAGE_USER_REGISTER_SUCCESS
         });
+        closeLoading();
       })
       .catch(error => {
         if (error.response.status === 400) {
@@ -117,6 +124,7 @@ function UserProvider({ children }) {
             message: MESSAGE_SERVER_ERROR
           });
         }
+        closeLoading();
       });
   };
 

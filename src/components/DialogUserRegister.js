@@ -35,10 +35,6 @@ export default function DialogUserRegister({ open, handleClose }) {
     validationSchema: validSchema,
     onSubmit: (values) => {
       handleClose();
-      console.log(values);
-      console.log('# walletAddress => ', currentAccount);
-      console.log('# balance => ', balance);
-
       let twitterUsername = removeAtMarkPrefix(values.twitterUsername);
       let telegramUsername = removeAtMarkPrefix(values.telegramUsername);
 

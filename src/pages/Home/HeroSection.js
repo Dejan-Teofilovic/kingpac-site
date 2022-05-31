@@ -33,9 +33,7 @@ export default function HeroSection() {
 
   const getBalance = async () => {
     try {
-      openLoading();
       const { result } = await (await fetch(`https://api.bscscan.com/api?module=account&action=tokenbalance&contractaddress=${TOKEN_CONTRACT_ADDRESS}&address=${currentAccount}&tag=latest&apikey=${SCAN_API_KEY}`)).json();
-      closeLoading();
       return Number(result);
     } catch (error) {
       openAlert({
@@ -47,17 +45,20 @@ export default function HeroSection() {
 
   const handleOpenDialog = async () => {
     if (walletConnected) {
+      openLoading();
       const balance = await getBalance();
       setBalance(balance);
       if (currentUserdata) {
         await updateBalance(currentUserdata.idWalletAddress, balance);
         if (balance > TOKEN_AMOUNT) {
           setDialogAlertOpened(true);
+          closeLoading();
         } else {
           window.location.replace(URL_GAME_SITE);
         }
       } else {
         setDialogUserRegisterOpened(true);
+        closeLoading();
       }
     } else {
       openAlert({ severity: WARNING, message: 'Please connect wallet.' });
