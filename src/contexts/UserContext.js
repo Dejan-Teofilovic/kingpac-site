@@ -5,9 +5,11 @@ import {
   INFO,
   LOCALSTORAGE_USERDATA,
   MESSAGE_SERVER_ERROR,
+  MESSAGE_USER_ALREADY_EXISTED,
   MESSAGE_USER_NOT_REGISTERED,
   MESSAGE_USER_REGISTER_SUCCESS,
-  SUCCESS
+  SUCCESS,
+  WARNING
 } from '../utils/constants';
 import { setItemOfLocalStorage } from '../utils/functions';
 import { AlertMessageContext } from './AlertMessageContext';
@@ -104,11 +106,17 @@ function UserProvider({ children }) {
         });
       })
       .catch(error => {
-        console.log(error.status);
-        openAlert({
-          severity: ERROR,
-          message: MESSAGE_SERVER_ERROR
-        });
+        if (error.response.status === 400) {
+          openAlert({
+            severity: WARNING,
+            message: MESSAGE_USER_ALREADY_EXISTED
+          });
+        } else {
+          openAlert({
+            severity: ERROR,
+            message: MESSAGE_SERVER_ERROR
+          });
+        }
       });
   };
 
