@@ -29,3 +29,16 @@ export const getItemOfLocalStorage = (name = 'x') => {
 export const removeItemOfLocalStorage = (name = 'x') => {
   localStorage.removeItem(name);
 };
+
+/**
+ * Remove the prefix '@' from a string
+ * @param {string} value String that has whether the prefix '@' or not.
+ * @returns String that has no prefix '@'
+ */
+export const removeAtMarkPrefix = (value) => {
+  if (value[0] === '@') {
+    return value.slice(1);
+  } else {
+    return value;
+  }
+};

@@ -16,6 +16,7 @@ import { COLOR_PRIMARY, FONT_AMARANTH, FONT_RIGHTEOUS } from '../utils/constants
 import { CustomDialog, PrimaryTextField, SecondaryButton } from './styledComponents';
 import useUser from '../hooks/useUser';
 import useWallet from '../hooks/useWallet';
+import { removeAtMarkPrefix } from '../utils/functions';
 
 const validSchema = yup.object().shape({
   twitterUsername: yup.string().required('Your username of twitter is required.'),
@@ -37,8 +38,13 @@ export default function DialogUserRegister({ open, handleClose }) {
       console.log(values);
       console.log('# walletAddress => ', currentAccount);
       console.log('# balance => ', balance);
+
+      let twitterUsername = removeAtMarkPrefix(values.twitterUsername);
+      let telegramUsername = removeAtMarkPrefix(values.telegramUsername);
+
       return registerUser({
-        ...values,
+        twitterUsername,
+        telegramUsername,
         walletAddress: currentAccount,
         balance
       });

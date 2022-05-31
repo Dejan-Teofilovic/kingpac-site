@@ -394,8 +394,6 @@ export const SCAN_API_KEY = 'MQPQP1JFJXGA72RYM5SRSR45YBDBZ7ADXX';  //  For env B
 
 export const TOKEN_AMOUNT = 1000000;
 
-
-
 //  Severities
 export const SUCCESS = 'success';
 export const WARNING = 'warning';

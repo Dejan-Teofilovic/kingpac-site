@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useState } from 'react';
+import React, { createContext, useContext, useReducer } from 'react';
 import api from '../utils/api';
 import {
   ERROR,
@@ -7,8 +7,7 @@ import {
   MESSAGE_SERVER_ERROR,
   MESSAGE_USER_NOT_REGISTERED,
   MESSAGE_USER_REGISTER_SUCCESS,
-  SUCCESS,
-  WARNING
+  SUCCESS
 } from '../utils/constants';
 import { setItemOfLocalStorage } from '../utils/functions';
 import { AlertMessageContext } from './AlertMessageContext';
@@ -128,11 +127,12 @@ function UserProvider({ children }) {
         });
       })
       .catch(error => {
-        console.log(error.status);
-        openAlert({
-          severity: ERROR,
-          message: MESSAGE_SERVER_ERROR
-        });
+        if (error.response.status === 404) {
+          openAlert({
+            severity: ERROR,
+            message: MESSAGE_SERVER_ERROR
+          });
+        }
       });
   };
 
