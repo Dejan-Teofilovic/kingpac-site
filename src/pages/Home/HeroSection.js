@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import {
@@ -10,7 +11,6 @@ import {
   SCAN_API_KEY,
   VAR_FADE_IN_UP,
   VAR_FADE_IN_DOWN,
-  URL_GAME_SITE,
   WARNING
 } from '../../utils/constants';
 import { PrimaryButton } from '../../components/styledComponents';
@@ -21,9 +21,10 @@ import useLoading from '../../hooks/useLoading';
 import DialogUserRegister from '../../components/DialogUserRegister';
 import MotionDiv from '../../components/MotionDiv';
 import useUser from '../../hooks/useUser';
-import api from '../../utils/api';
+
 
 export default function HeroSection() {
+  const navigate = useNavigate();
   const { currentAccount, walletConnected, setBalance } = useWallet();
   const { openAlert } = useAlertMessage();
   const { openLoading, closeLoading } = useLoading();
@@ -50,22 +51,14 @@ export default function HeroSection() {
       const balance = await getBalance();
       setBalance(balance);
       if (currentUserdata) {
-        await updateBalance(currentUserdata.idWalletAddress, balance);
-        if (balance > TOKEN_AMOUNT) {
-          setDialogAlertOpened(true);
+        // await updateBalance(currentUserdata.idWalletAddress, balance);
+        // if (balance > TOKEN_AMOUNT) {
+        //   setDialogAlertOpened(true);
+        //   closeLoading();
+        // } else {
+          navigate('/game');
           closeLoading();
-        } else {
-          // const accessToken = (await api.post(`/site/getAccessToken`, {
-          //   idWalletAddress: currentUserdata.idWalletAddress,
-          //   idSocialUsername: currentUserdata.idSocialUsername
-          // })).data;
-          // console.log('# accessToken => ', accessToken);
-          // window.location.replace(`${URL_GAME_SITE}${accessToken}`);
-          navigator.serviceWorker.controller.postMessage({
-            broadcast: currentUserdata
-          });
-          window.open(URL_GAME_SITE, '_blank');
-        }
+        // }
       } else {
         setDialogUserRegisterOpened(true);
         closeLoading();
