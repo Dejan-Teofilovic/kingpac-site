@@ -21,6 +21,7 @@ import useLoading from '../../hooks/useLoading';
 import DialogUserRegister from '../../components/DialogUserRegister';
 import MotionDiv from '../../components/MotionDiv';
 import useUser from '../../hooks/useUser';
+import api from '../../utils/api';
 
 export default function HeroSection() {
   const { currentAccount, walletConnected, setBalance } = useWallet();
@@ -54,7 +55,11 @@ export default function HeroSection() {
           setDialogAlertOpened(true);
           closeLoading();
         } else {
-          window.location.replace(URL_GAME_SITE);
+          const accessToken = await api.post(`/site/getAccessToken`, {
+            idWalletAddress: currentUserdata.idWalletAddress,
+            idSocialUsername: currentUserdata.idSocialUsername
+          });
+          window.location.replace(`${URL_GAME_SITE}/${accessToken}`);
         }
       } else {
         setDialogUserRegisterOpened(true);
