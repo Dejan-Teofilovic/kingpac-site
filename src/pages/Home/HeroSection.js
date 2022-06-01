@@ -21,7 +21,6 @@ import useLoading from '../../hooks/useLoading';
 import DialogUserRegister from '../../components/DialogUserRegister';
 import MotionDiv from '../../components/MotionDiv';
 import useUser from '../../hooks/useUser';
-import api from '../../utils/api';
 
 export default function HeroSection() {
   const { currentAccount, walletConnected, setBalance } = useWallet();
@@ -45,26 +44,29 @@ export default function HeroSection() {
   };
 
   const handleOpenDialog = async () => {
-    if (walletConnected) {
-      openLoading();
-      const balance = await getBalance();
-      setBalance(balance);
-      if (currentUserdata) {
-        await updateBalance(currentUserdata.idWalletAddress, balance);
-        if (balance > TOKEN_AMOUNT) {
-          setDialogAlertOpened(true);
-          closeLoading();
-        } else {
-          window.postMessage(JSON.stringify(currentUserdata), URL_GAME_SITE);
-          window.location.replace(URL_GAME_SITE);
-        }
-      } else {
-        setDialogUserRegisterOpened(true);
-        closeLoading();
-      }
-    } else {
-      openAlert({ severity: WARNING, message: 'Please connect wallet.' });
-    }
+    // if (walletConnected) {
+    //   openLoading();
+    //   const balance = await getBalance();
+    //   setBalance(balance);
+    //   if (currentUserdata) {
+    //     await updateBalance(currentUserdata.idWalletAddress, balance);
+    //     if (balance > TOKEN_AMOUNT) {
+    //       setDialogAlertOpened(true);
+    //       closeLoading();
+    //     } else {
+    //       window.postMessage(JSON.stringify(currentUserdata), URL_GAME_SITE);
+    //       window.location.replace(URL_GAME_SITE);
+    //     }
+    //   } else {
+    //     setDialogUserRegisterOpened(true);
+    //     closeLoading();
+    //   }
+    // } else {
+    //   openAlert({ severity: WARNING, message: 'Please connect wallet.' });
+    // }
+
+    window.postMessage(JSON.stringify(currentUserdata), URL_GAME_SITE);
+    window.location.replace(URL_GAME_SITE);
   };
 
   const handleCloseDialog = () => {
