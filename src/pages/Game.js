@@ -8,11 +8,13 @@ export default function Game() {
     console.log('Game page');
     // channel.postMessage('Hey, Mr.New');
     return () => {
-      const iframeOfGame = document.getElementById('kingpac-game').contentWindow;
-      console.log(iframeOfGame);
-      iframeOfGame.postMessage('hello', URL_GAME_SITE);
-    }
-  }, [])
+      const iframeOfGame = document.getElementById('kingpac-game');
+      console.log('# iframeOfGame => ', iframeOfGame);
+      if (iframeOfGame) {
+        iframeOfGame.contentWindow.postMessage('hello', URL_GAME_SITE);
+      }
+    };
+  }, []);
   return (
     <iframe
       id="kingpac-game"
