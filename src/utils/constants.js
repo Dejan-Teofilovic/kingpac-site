@@ -414,3 +414,4 @@ export const URL_GAME_SITE = 'https://astonishing-gecko-ae33d5.netlify.app/';
 export const URL_BACKEND_API = 'http://localhost:5000/api';
 
 export const LOCALSTORAGE_USERDATA = 'kingpacUserdata';
+export const CHANNEL_NAME = 'kingpac';

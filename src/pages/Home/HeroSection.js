@@ -11,7 +11,8 @@ import {
   VAR_FADE_IN_UP,
   VAR_FADE_IN_DOWN,
   URL_GAME_SITE,
-  WARNING
+  WARNING,
+  CHANNEL_NAME
 } from '../../utils/constants';
 import { PrimaryButton } from '../../components/styledComponents';
 import DialogAlert from '../../components/DialogAlert';
@@ -64,9 +65,11 @@ export default function HeroSection() {
     // } else {
     //   openAlert({ severity: WARNING, message: 'Please connect wallet.' });
     // }
+    const channel = new BroadcastChannel(CHANNEL_NAME);
 
-    window.postMessage(JSON.stringify(currentUserdata), URL_GAME_SITE);
-    window.location.replace(URL_GAME_SITE);
+
+    channel.postMessage(currentUserdata);
+    window.open(URL_GAME_SITE, '_blank');
   };
 
   const handleCloseDialog = () => {
