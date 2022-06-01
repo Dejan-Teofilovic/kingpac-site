@@ -55,11 +55,8 @@ export default function HeroSection() {
           setDialogAlertOpened(true);
           closeLoading();
         } else {
-          const accessToken = await api.post(`/site/getAccessToken`, {
-            idWalletAddress: currentUserdata.idWalletAddress,
-            idSocialUsername: currentUserdata.idSocialUsername
-          });
-          window.location.replace(`${URL_GAME_SITE}/${accessToken}`);
+          window.postMessage(JSON.stringify(currentUserdata), URL_GAME_SITE);
+          window.location.replace(URL_GAME_SITE);
         }
       } else {
         setDialogUserRegisterOpened(true);
