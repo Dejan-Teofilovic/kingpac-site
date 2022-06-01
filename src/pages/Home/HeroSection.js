@@ -11,8 +11,7 @@ import {
   VAR_FADE_IN_UP,
   VAR_FADE_IN_DOWN,
   URL_GAME_SITE,
-  WARNING,
-  CHANNEL_NAME
+  WARNING
 } from '../../utils/constants';
 import { PrimaryButton } from '../../components/styledComponents';
 import DialogAlert from '../../components/DialogAlert';
@@ -22,6 +21,7 @@ import useLoading from '../../hooks/useLoading';
 import DialogUserRegister from '../../components/DialogUserRegister';
 import MotionDiv from '../../components/MotionDiv';
 import useUser from '../../hooks/useUser';
+import api from '../../utils/api';
 
 export default function HeroSection() {
   const { currentAccount, walletConnected, setBalance } = useWallet();
@@ -45,31 +45,34 @@ export default function HeroSection() {
   };
 
   const handleOpenDialog = async () => {
-    // if (walletConnected) {
-    //   openLoading();
-    //   const balance = await getBalance();
-    //   setBalance(balance);
-    //   if (currentUserdata) {
-    //     await updateBalance(currentUserdata.idWalletAddress, balance);
-    //     if (balance > TOKEN_AMOUNT) {
-    //       setDialogAlertOpened(true);
-    //       closeLoading();
-    //     } else {
-    //       window.postMessage(JSON.stringify(currentUserdata), URL_GAME_SITE);
-    //       window.location.replace(URL_GAME_SITE);
-    //     }
-    //   } else {
-    //     setDialogUserRegisterOpened(true);
-    //     closeLoading();
-    //   }
-    // } else {
-    //   openAlert({ severity: WARNING, message: 'Please connect wallet.' });
-    // }
-    const channel = new BroadcastChannel(CHANNEL_NAME);
-
-
-    channel.postMessage(currentUserdata);
-    window.open(URL_GAME_SITE, '_blank');
+    if (walletConnected) {
+      openLoading();
+      const balance = await getBalance();
+      setBalance(balance);
+      if (currentUserdata) {
+        await updateBalance(currentUserdata.idWalletAddress, balance);
+        if (balance > TOKEN_AMOUNT) {
+          setDialogAlertOpened(true);
+          closeLoading();
+        } else {
+          // const accessToken = (await api.post(`/site/getAccessToken`, {
+          //   idWalletAddress: currentUserdata.idWalletAddress,
+          //   idSocialUsername: currentUserdata.idSocialUsername
+          // })).data;
+          // console.log('# accessToken => ', accessToken);
+          // window.location.replace(`${URL_GAME_SITE}${accessToken}`);
+          navigator.serviceWorker.controller.postMessage({
+            broadcast: currentUserdata
+          });
+          window.open(URL_GAME_SITE, '_blank');
+        }
+      } else {
+        setDialogUserRegisterOpened(true);
+        closeLoading();
+      }
+    } else {
+      openAlert({ severity: WARNING, message: 'Please connect wallet.' });
+    }
   };
 
   const handleCloseDialog = () => {
