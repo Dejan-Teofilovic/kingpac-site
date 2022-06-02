@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { CHANNEL_NAME, URL_GAME_SITE } from '../utils/constants';
+import { CHANNEL_NAME, URL_GAME_SITE } from '../../utils/constants';
 
 const channel = new BroadcastChannel(CHANNEL_NAME);
 
@@ -11,8 +11,9 @@ export default function Game() {
       const iframeOfGame = document.getElementById('kingpac-game');
       console.log('# iframeOfGame => ', iframeOfGame);
       if (iframeOfGame) {
+        channel.postMessage('hello, Mr.New');
         // iframeOfGame.contentWindow.postMessage('hello', '*');
-        window.postMessage('hello', '*');
+        // window.postMessage('hello', '*');
       }
     };
   }, []);

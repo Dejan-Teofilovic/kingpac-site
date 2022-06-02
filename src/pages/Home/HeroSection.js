@@ -22,7 +22,6 @@ import DialogUserRegister from '../../components/DialogUserRegister';
 import MotionDiv from '../../components/MotionDiv';
 import useUser from '../../hooks/useUser';
 
-
 export default function HeroSection() {
   const navigate = useNavigate();
   const { currentAccount, walletConnected, setBalance } = useWallet();
@@ -130,14 +129,22 @@ export default function HeroSection() {
               </Typography>
             </MotionDiv>
             <MotionDiv variants={VAR_FADE_IN_UP}>
-              <Typography fontFamily={FONT_AMARANTH} color={grey[400]} fontSize={18} textAlign={{ xs: 'center', md: 'left' }}>
+              <Typography 
+                fontFamily={FONT_AMARANTH} 
+                color={grey[400]} 
+                fontSize={18} 
+                textAlign={{ xs: 'center', md: 'left' }}
+              >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </Typography>
             </MotionDiv>
 
             <Stack direction="row" justifyContent={{ xs: 'center', md: 'start' }}>
               <MotionDiv variants={VAR_FADE_IN_DOWN}>
-                <PrimaryButton sx={{ fontSize: { xs: 14, md: 18 }, px: 4 }} onClick={handleOpenDialog}>
+                <PrimaryButton 
+                  sx={{ fontSize: { xs: 14, md: 18 }, px: 4 }} 
+                  onClick={handleOpenDialog}
+                >
                   Play Game
                 </PrimaryButton>
               </MotionDiv>
