@@ -11,7 +11,7 @@ export default function Game() {
       const iframeOfGame = document.getElementById('kingpac-game');
       console.log('# iframeOfGame => ', iframeOfGame);
       if (iframeOfGame) {
-        iframeOfGame.contentWindow.postMessage('hello', URL_GAME_SITE);
+        iframeOfGame.contentWindow.postMessage('hello', '*');
       }
     };
   }, []);
