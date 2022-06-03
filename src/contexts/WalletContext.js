@@ -6,7 +6,9 @@ import {
   ERROR,
   LOCALSTORAGE_USERDATA,
   MESSAGE_WALLET_CONNECT_ERROR,
-  WALLET_CONNECT_INFURA_ID
+  SCAN_API_KEY,
+  WALLET_CONNECT_INFURA_ID,
+  ADDRESS_OF_REWARD_POOL
 } from '../utils/constants';
 import { AlertMessageContext } from './AlertMessageContext';
 import { UserContext } from './UserContext';
@@ -18,7 +20,8 @@ const initialState = {
   walletConnected: false,
   currentAccount: '',
   balance: 0,
-  provider: null
+  provider: null,
+  balanceOfRewardPool: 0
 };
 
 const handlers = {
@@ -45,6 +48,12 @@ const handlers = {
       ...state,
       provider: action.payload
     };
+  },
+  SET_BALANCE_OF_REWARD_POOL: (state, action) => {
+    return {
+      ...state,
+      balanceOfRewardPool: action.payload
+    };
   }
 };
 
@@ -56,7 +65,8 @@ const WalletContext = createContext({
   ...initialState,
   connectWallet: () => Promise.resolve(),
   disconnectWallet: () => Promise.resolve(),
-  setBalance: () => Promise.resolve()
+  setBalance: () => Promise.resolve(),
+  getBalanceOfRewardPool: () => Promise.resolve()
 });
 
 //  Provider
@@ -152,13 +162,21 @@ function WalletProvider({ children }) {
     });
   };
 
+  const getBalanceOfRewardPool = async () => {
+    const { result } = await (await fetch(`https://api.bscscan.com/api?module=account&action=balance&address=${ADDRESS_OF_REWARD_POOL}&tag=latest&apikey=${SCAN_API_KEY}`)).json();
+    dispatch({
+      type: 'SET_BALANCE_OF_REWARD_POOL',
+      payload: Number(Number(result).toFixed(2))
+    });
+  };
   return (
     <WalletContext.Provider
       value={{
         ...state,
         connectWallet,
         disconnectWallet,
-        setBalance
+        setBalance,
+        getBalanceOfRewardPool
       }}
     >
       {children}

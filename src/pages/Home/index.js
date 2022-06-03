@@ -9,6 +9,7 @@ import OurTeamSection from './OurTeamSection';
 import PolicySection from './PolicySection';
 import RoadmapSection from './RoadmapSection';
 import useUser from '../../hooks/useUser';
+import useWallet from '../../hooks/useWallet';
 
 const SECTIONS = [
   {
@@ -43,11 +44,13 @@ const SECTIONS = [
 
 export default function Home() {
   const { getWinners } = useUser();
+  const { getBalanceOfRewardPool } = useWallet();
 
   useState(() => {
     getWinners();
+    getBalanceOfRewardPool();
   }, []);
-  
+
   return (
     <>
       <HeroSection />

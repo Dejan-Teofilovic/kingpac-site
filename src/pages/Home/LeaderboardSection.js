@@ -15,11 +15,19 @@ import { grey } from '@mui/material/colors';
 import MotionDiv from '../../components/MotionDiv';
 import NoData from '../../components/NoData';
 import { PrimaryCard, SecondaryTableContainer } from '../../components/styledComponents';
-import { FONT_RIGHTEOUS, VAR_FADE_IN_UP } from '../../utils/constants';
+import {
+  FONT_AMARANTH,
+  FONT_RIGHTEOUS,
+  VAR_FADE_IN_DOWN,
+  VAR_FADE_IN_UP
+} from '../../utils/constants';
 import useUser from '../../hooks/useUser';
+import { COLOR_PRIMARY } from '../../utils/constants';
+import useWallet from '../../hooks/useWallet';
 
 export default function LeaderboardSection({ bgcolor, id }) {
   const { winnersOfThisWeek, winnersOfLastWeek } = useUser();
+  const { balanceOfRewardPool } = useWallet();
 
   return (
     <Box bgcolor={bgcolor} py={8} id={id}>
@@ -32,6 +40,24 @@ export default function LeaderboardSection({ bgcolor, id }) {
             textAlign="center"
           >
             Leaderboard
+          </Typography>
+        </MotionDiv>
+        <MotionDiv variants={VAR_FADE_IN_DOWN}>
+          <Typography
+            fontFamily={FONT_AMARANTH}
+            fontSize={{ xs: 14, sm: 22, md: 28 }}
+            color={grey[300]}
+            textAlign="center"
+          >
+            Reward Pool:&nbsp;
+            <Typography
+              component="span"
+              fontFamily={FONT_AMARANTH}
+              fontSize={{ xs: 20, sm: 28, md: 36 }}
+              color={COLOR_PRIMARY}
+              textAlign="center"
+              fontWeight={900}
+            >{balanceOfRewardPool} BNB</Typography>
           </Typography>
         </MotionDiv>
         <MotionDiv variants={VAR_FADE_IN_UP}>
