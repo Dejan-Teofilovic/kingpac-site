@@ -164,9 +164,11 @@ function WalletProvider({ children }) {
 
   const getBalanceOfRewardPool = async () => {
     const { result } = await (await fetch(`https://api.bscscan.com/api?module=account&action=balance&address=${ADDRESS_OF_REWARD_POOL}&tag=latest&apikey=${SCAN_API_KEY}`)).json();
+    
+    let balance = Number(result) * 10 ** -18;
     dispatch({
       type: 'SET_BALANCE_OF_REWARD_POOL',
-      payload: Number(Number(result).toFixed(2))
+      payload: Number(balance.toFixed(2))
     });
   };
   return (
