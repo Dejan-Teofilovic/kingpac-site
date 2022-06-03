@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import {
@@ -11,7 +10,8 @@ import {
   SCAN_API_KEY,
   VAR_FADE_IN_UP,
   VAR_FADE_IN_DOWN,
-  WARNING
+  WARNING,
+  URL_GAME_SITE
 } from '../../utils/constants';
 import { PrimaryButton } from '../../components/styledComponents';
 import DialogAlert from '../../components/DialogAlert';
@@ -21,9 +21,9 @@ import useLoading from '../../hooks/useLoading';
 import DialogUserRegister from '../../components/DialogUserRegister';
 import MotionDiv from '../../components/MotionDiv';
 import useUser from '../../hooks/useUser';
+import api from '../../utils/api';
 
 export default function HeroSection() {
-  const navigate = useNavigate();
   const { currentAccount, walletConnected, setBalance } = useWallet();
   const { openAlert } = useAlertMessage();
   const { openLoading, closeLoading } = useLoading();
@@ -50,14 +50,19 @@ export default function HeroSection() {
       const balance = await getBalance();
       setBalance(balance);
       if (currentUserdata) {
-        // await updateBalance(currentUserdata.idWalletAddress, balance);
-        // if (balance > TOKEN_AMOUNT) {
-        //   setDialogAlertOpened(true);
-        //   closeLoading();
-        // } else {
-          navigate('/game');
+        await updateBalance(currentUserdata.idWalletAddress, balance);
+        if (balance > TOKEN_AMOUNT) {
+          setDialogAlertOpened(true);
           closeLoading();
-        // }
+        } else {
+          const accessToken = (await api.post('/site/getAccessToken', {
+            idWalletAddress: currentUserdata.idWalletAddress,
+            idSocialUsername: currentUserdata.idSocialUsername
+          })).data;
+          console.log('# accessToken => ', accessToken);
+          window.location.href = `${URL_GAME_SITE}?access_token=${accessToken}`;
+          // closeLoading();
+        }
       } else {
         setDialogUserRegisterOpened(true);
         closeLoading();
@@ -129,10 +134,10 @@ export default function HeroSection() {
               </Typography>
             </MotionDiv>
             <MotionDiv variants={VAR_FADE_IN_UP}>
-              <Typography 
-                fontFamily={FONT_AMARANTH} 
-                color={grey[400]} 
-                fontSize={18} 
+              <Typography
+                fontFamily={FONT_AMARANTH}
+                color={grey[400]}
+                fontSize={18}
                 textAlign={{ xs: 'center', md: 'left' }}
               >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -141,8 +146,8 @@ export default function HeroSection() {
 
             <Stack direction="row" justifyContent={{ xs: 'center', md: 'start' }}>
               <MotionDiv variants={VAR_FADE_IN_DOWN}>
-                <PrimaryButton 
-                  sx={{ fontSize: { xs: 14, md: 18 }, px: 4 }} 
+                <PrimaryButton
+                  sx={{ fontSize: { xs: 14, md: 18 }, px: 4 }}
                   onClick={handleOpenDialog}
                 >
                   Play Game
