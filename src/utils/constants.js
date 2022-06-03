@@ -411,8 +411,8 @@ export const MESSAGE_USER_ALREADY_EXISTED = 'You already registered in our site.
 
 //  Urls
 export const URL_TELEGRAM_COMMUNITY = 'https://t.me/KingPacToken';
-export const URL_GAME_SITE = 'https://astonishing-gecko-ae33d5.netlify.app';
-export const URL_BACKEND_API = 'http://194.31.150.180/api';
+export const URL_GAME_SITE = 'http://p2e.kinpactoken.com';
+export const URL_BACKEND_API = 'http://kingpactoken.com/api';
 
 export const LOCALSTORAGE_USERDATA = 'kingpacUserdata';
 export const CHANNEL_NAME = 'kingpac';
