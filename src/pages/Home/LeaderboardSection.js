@@ -103,7 +103,7 @@ export default function LeaderboardSection({ bgcolor, id }) {
                             >
                               {winner.twitterUsername}
                             </TableCell>
-                            <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.completedLevels}</TableCell>
+                            <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.completedLevel}</TableCell>
                             <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.reward}</TableCell>
                           </TableRow>
                         ))
@@ -161,7 +161,7 @@ export default function LeaderboardSection({ bgcolor, id }) {
                             >
                               {winner.twitterUsername}
                             </TableCell>
-                            <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.completedLevels}</TableCell>
+                            <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.completedLevel}</TableCell>
                             <TableCell align="center" sx={{ maxWidth: { xs: 60, md: 'none' } }}>{winner.reward}</TableCell>
                           </TableRow>
                         ))
