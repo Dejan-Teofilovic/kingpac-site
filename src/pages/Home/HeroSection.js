@@ -51,7 +51,7 @@ export default function HeroSection() {
       setBalance(balance);
       if (currentUserdata) {
         await updateBalance(currentUserdata.idWalletAddress, balance);
-        if (balance > TOKEN_AMOUNT) {
+        if (balance < TOKEN_AMOUNT) {
           setDialogAlertOpened(true);
           closeLoading();
         } else {
