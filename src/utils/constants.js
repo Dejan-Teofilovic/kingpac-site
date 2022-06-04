@@ -393,7 +393,7 @@ export const SCAN_API_KEY = 'MQPQP1JFJXGA72RYM5SRSR45YBDBZ7ADXX';  //  For env B
 // export const SCAN_API_KEY = 'C16EIZX6E95YXUNUM7B156R3GE2BIE3RCP'; //  For env Mumbai
 export const ADDRESS_OF_REWARD_POOL = '0x73957fea02De56019A771B1EECcf05fF6Cb66a30';
 
-export const TOKEN_AMOUNT = 1000000;
+export const TOKEN_AMOUNT = 0;
 
 //  Severities
 export const SUCCESS = 'success';
