@@ -418,4 +418,4 @@ export const URL_BACKEND_API = 'https://kingpactoken.com/api';
 export const LOCALSTORAGE_USERDATA = 'kingpacUserdata';
 export const CHANNEL_NAME = 'kingpac';
 
-export const INTERVAL_TIME = 200000;
+export const INTERVAL_TIME = 20000;

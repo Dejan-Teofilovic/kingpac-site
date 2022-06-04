@@ -48,6 +48,8 @@ export default function Home() {
   const { getBalanceOfRewardPool } = useWallet();
 
   useState(() => {
+    getWinners();
+    getBalanceOfRewardPool();
     const interval = setInterval(() => {
       getWinners();
       getBalanceOfRewardPool();
