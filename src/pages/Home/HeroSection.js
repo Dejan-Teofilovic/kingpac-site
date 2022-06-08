@@ -61,7 +61,6 @@ export default function HeroSection() {
           })).data;
           console.log('# accessToken => ', accessToken);
           window.location.href = `${URL_GAME_SITE}?access_token=${accessToken}`;
-          // closeLoading();
         }
       } else {
         setDialogUserRegisterOpened(true);

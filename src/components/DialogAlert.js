@@ -10,7 +10,7 @@ import {
 import { Close } from '@mui/icons-material';
 import { grey } from '@mui/material/colors';
 import { CustomDialog, SecondaryButton } from './styledComponents';
-import { COLOR_PRIMARY, FONT_AMARANTH, FONT_RIGHTEOUS } from '../utils/constants';
+import { COLOR_PRIMARY, FONT_AMARANTH, FONT_RIGHTEOUS, URL_BUY_TOKEN, URL_TELEGRAM_COMMUNITY } from '../utils/constants';
 
 export default function DialogAlert({ open, handleClose }) {
   return (
@@ -32,13 +32,21 @@ export default function DialogAlert({ open, handleClose }) {
         <Typography gutterBottom fontFamily={FONT_AMARANTH} color={grey[900]}>
           You need to hold 1,000,000 Kingpac token to play the game.<br />
           <b>
-            <Link target="_blank" href="https://pancakeswap.finance/" sx={{ color: 'black', textDecoration: 'none' }}>
+            <Link
+              target="_blank"
+              href={URL_BUY_TOKEN}
+              sx={{ color: 'black', textDecoration: 'none' }}
+            >
               Buy token.
             </Link>
           </b>
           &nbsp;And join telegram community&nbsp;
           <b>
-            <Link target="_blank" href="https://t.me/KingPacToken" sx={{ color: 'black', textDecoration: 'none' }}>
+            <Link
+              target="_blank"
+              href={URL_TELEGRAM_COMMUNITY}
+              sx={{ color: 'black', textDecoration: 'none' }}
+            >
               here
             </Link>
           </b>.

@@ -1,14 +1,24 @@
 import React from 'react';
 import { Box, Container, Link, Stack, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
-import { URL_TELEGRAM_COMMUNITY, FONT_AMARANTH, FONT_RIGHTEOUS, VAR_FADE_IN_UP, VAR_FADE_IN_DOWN } from '../../utils/constants';
+import { 
+  URL_TELEGRAM_COMMUNITY, 
+  FONT_AMARANTH, 
+  FONT_RIGHTEOUS, 
+  VAR_FADE_IN_UP, 
+  VAR_FADE_IN_DOWN 
+} from '../../utils/constants';
 import { PrimaryButton } from '../../components/styledComponents';
 import MotionDiv from '../../components/MotionDiv';
 
 export default function CommunitySection() {
   return (
     <Box
-      sx={{ background: 'url(/assets/images/community_background.jpg) no-repeat', backgroundSize: 'cover' }}
+      sx={{ 
+        background: 'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7) ), url(/assets/images/community_background.jpg) no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }}
       py={12}
       id="community"
     >
