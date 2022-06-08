@@ -71,44 +71,29 @@ export const TEAM_MEMBERS = [
 export const FAQ = [
   {
     id: 1,
-    question: 'Why is there a waitlist?',
-    answer: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'
+    question: 'WHAT ARE PLAY-TO-EARN GAMES?',
+    answer: 'Play-to-earn games are blockchain games where players are rewarded in tokens( BNB in our case) for simply playing the game, getting achievements, completing levels, etc.'
   },
   {
     id: 2,
-    question: 'How much are the figures?',
-    answer: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'
+    question: 'IS THE GAME FREE TO PLAY?',
+    answer: 'Yes, the kingPac game is free to play. You don’t need to deposit any amount to play the game, You just need to hold a certain amount of tokens to play.'
   },
   {
     id: 3,
-    question: 'Assume you accept ETH only?',
-    answer: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'
+    question: 'WHAT ARE THE REQUIREMENTS TO PLAY THE GAME?',
+    answer: 'You just need to hold 1,000,000 KPAC tokens to play the game and earn rewards.'
   },
   {
     id: 4,
-    question: 'What is the wait time?',
-    answer: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'
+    question: 'HOW CAN SOMEONE WIN PRIZES PLAYING THE GAME?',
+    answer: 'There are unlimited levels in KINGPAC, Players who complete the most number of levels are considered the winners. The top 15 players are considered winners.'
   },
   {
     id: 5,
-    question: 'Any way to shorten the wait time?',
-    answer: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'
-  },
-  {
-    id: 6,
-    question: 'How about delivery? Is it included?',
-    answer: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'
-  },
-  {
-    id: 7,
-    question: 'Do you only handle PFP NFTs? How about my other NFTs?',
-    answer: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'
-  },
-  {
-    id: 8,
-    question: 'Can I customize the size of my figure?',
-    answer: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'
-  },
+    question: 'WHEN WILL BE WINNERS PAID?',
+    answer: 'Winners will be getting paid every weekend to their bsc address.'
+  }
 ];
 
 export const WINNERS = [
