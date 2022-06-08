@@ -1,8 +1,24 @@
 import { TimelineItem } from '@mui/lab';
-import { Accordion, Button, Card, Dialog, LinearProgress, linearProgressClasses, TableContainer, TextField } from '@mui/material';
+import {
+  Accordion,
+  Button,
+  Card,
+  Dialog,
+  LinearProgress,
+  linearProgressClasses,
+  TableContainer,
+  TextField
+} from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
-import { COLOR_PRIMARY, FONT_AMARANTH, FONT_RIGHTEOUS } from '../utils/constants';
+import {
+  COLOR_PRIMARY,
+  COLOR_SECONDARY,
+  COLOR_SUCCESS,
+  COLOR_WARNING,
+  FONT_AMARANTH,
+  FONT_RIGHTEOUS
+} from '../utils/constants';
 
 export const PrimaryButton = styled(Button)`
   background-color: ${COLOR_PRIMARY};
@@ -108,3 +124,27 @@ export const CustomTimelineItem = styled(TimelineItem)(({ theme }) => ({
     flex: 'none'
   }
 }));
+
+export const SuccessLinearProgressbar = styled(LinearProgress)({
+  height: 10,
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor: COLOR_SECONDARY,
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    borderRadius: 5,
+    backgroundColor: COLOR_SUCCESS,
+  },
+});
+
+export const WarningLinearProgressbar = styled(LinearProgress)({
+  height: 10,
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor: COLOR_SECONDARY,
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    borderRadius: 5,
+    backgroundColor: COLOR_WARNING,
+  },
+});

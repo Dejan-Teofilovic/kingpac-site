@@ -2,7 +2,14 @@ import React from 'react';
 import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import MotionDiv from '../../components/MotionDiv';
-import { FONT_RIGHTEOUS, POLICIES_BUY, POLICIES_SELL, VAR_FADE_IN_UP } from '../../utils/constants';
+import {
+  FONT_RIGHTEOUS,
+  POLICIES_BUY,
+  POLICIES_SELL,
+  VAR_FADE_IN_UP,
+  SUCCESS,
+  WARNING
+} from '../../utils/constants';
 import CustomLinearProgressbar from '../../components/CustomLinearProgressBar';
 
 export default function PolicySection({ bgcolor, id }) {
@@ -34,15 +41,20 @@ export default function PolicySection({ bgcolor, id }) {
               textAlign="center"
               color={grey[300]}
             >BUY</Typography>
-            <Stack mt={3} spacing={3}>
-              <MotionDiv variants={VAR_FADE_IN_UP}>
+            <MotionDiv variants={VAR_FADE_IN_UP}>
+              <Stack mt={3} spacing={2}>
                 {
                   POLICIES_BUY.map(dataItem => (
-                    <CustomLinearProgressbar key={dataItem.label} label={dataItem.label} value={dataItem.value} />
+                    <CustomLinearProgressbar
+                      key={dataItem.label}
+                      label={dataItem.label}
+                      value={dataItem.value}
+                      variant={SUCCESS}
+                    />
                   ))
                 }
-              </MotionDiv>
-            </Stack>
+              </Stack>
+            </MotionDiv>
           </Grid>
           <Grid item xs={12} md={6}>
             <Typography
@@ -51,15 +63,20 @@ export default function PolicySection({ bgcolor, id }) {
               textAlign="center"
               color={grey[300]}
             >SELL</Typography>
-            <Stack mt={3} spacing={3}>
-              <MotionDiv variants={VAR_FADE_IN_UP}>
+            <MotionDiv variants={VAR_FADE_IN_UP}>
+              <Stack mt={3} spacing={2}>
                 {
                   POLICIES_SELL.map(dataItem => (
-                    <CustomLinearProgressbar key={dataItem.label} label={dataItem.label} value={dataItem.value} />
+                    <CustomLinearProgressbar
+                      key={dataItem.label}
+                      label={dataItem.label}
+                      value={dataItem.value}
+                      variant={WARNING}
+                    />
                   ))
                 }
-              </MotionDiv>
-            </Stack>
+              </Stack>
+            </MotionDiv>
           </Grid>
         </Grid>
       </Container>

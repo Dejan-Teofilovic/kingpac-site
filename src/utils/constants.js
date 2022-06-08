@@ -1,3 +1,5 @@
+import { grey } from "@mui/material/colors";
+
 export const ROUTES = [
   {
     name: 'Leaderboard',
@@ -370,6 +372,11 @@ export const FONT_AMARANTH = "'Amaranth', sans-serif";
 
 // Colors
 export const COLOR_PRIMARY = '#eec51e';
+export const COLOR_SECONDARY = grey[600];
+export const COLOR_SUCCESS = '#0fed18';
+export const COLOR_WARNING = '#fdc400';
+export const COLOR_DARK = grey[900];
+export const COLOR_BRIGHT = 'white';
 
 export const WALLET_CONNECT_INFURA_ID = '8cf3cad623da43f9a84ab5ac94230cf6';
 
