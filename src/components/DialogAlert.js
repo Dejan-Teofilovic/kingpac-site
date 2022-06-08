@@ -10,7 +10,13 @@ import {
 import { Close } from '@mui/icons-material';
 import { grey } from '@mui/material/colors';
 import { CustomDialog, SecondaryButton } from './styledComponents';
-import { COLOR_PRIMARY, FONT_AMARANTH, FONT_RIGHTEOUS, URL_BUY_TOKEN, URL_TELEGRAM_COMMUNITY } from '../utils/constants';
+import { 
+  COLOR_PRIMARY, 
+  FONT_AMARANTH, 
+  FONT_RIGHTEOUS, 
+  URL_BUY_TOKEN, 
+  URL_TELEGRAM_COMMUNITY 
+} from '../utils/constants';
 
 export default function DialogAlert({ open, handleClose }) {
   return (

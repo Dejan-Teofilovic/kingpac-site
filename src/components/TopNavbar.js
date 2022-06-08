@@ -7,7 +7,6 @@ import {
   Container,
   Drawer,
   IconButton,
-  Link,
   List,
   ListItem,
   ListItemButton,
@@ -17,6 +16,7 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { grey } from '@mui/material/colors';
+import { Link as ScrollLink } from 'react-scroll';
 import { PrimaryButton, TextButton } from './styledComponents';
 import { FONT_RIGHTEOUS, ROUTES } from '../utils/constants';
 import useWallet from '../hooks/useWallet';
@@ -39,7 +39,7 @@ export default function TopNavbar() {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: 'rgba(0, 0, 0, 0)', py: 2 }}>
+    <AppBar position="sticky" sx={{ backgroundColor: 'rgba(0, 0, 0, 0.9)', py: 1 }}>
       <Container maxWidth="xl">
         <Toolbar>
           {/* For Mobile */}
@@ -67,12 +67,16 @@ export default function TopNavbar() {
                 {
                   ROUTES.map(route => (
                     <ListItem key={route.path}>
-                      <ListItemButton
-                        sx={{ color: grey[300], fontFamily: FONT_RIGHTEOUS }}
-                        component={Link}
-                        href={route.path}
-                      >
-                        {route.name}
+                      <ListItemButton sx={{ color: grey[300], fontFamily: FONT_RIGHTEOUS }}>
+                        <ScrollLink
+                          to={route.path}
+                          spy={true}
+                          smooth={true}
+                          offset={-70}
+                          duration={500}
+                        >
+                          {route.name}
+                        </ScrollLink>
                       </ListItemButton>
                     </ListItem>
                   ))
@@ -83,14 +87,14 @@ export default function TopNavbar() {
 
           {/* Logo for desktop */}
           <Button component={RouterLink} to="/" sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <Box component="img" src="/assets/images/logo.png" width={50} ml={1} />
+            <Box component="img" src="/assets/images/logo.png" width={50} />
           </Button>
 
           <Box flexGrow={1}>
             <Stack direction="row" justifyContent="center">
-              {/* Logo for desktop */}
+              {/* Logo for mobile */}
               <Button component={RouterLink} to="/" sx={{ display: { xs: 'flex', md: 'none' } }}>
-                <Box component="img" src="/assets/images/logo.png" width={70} ml={1} />
+                <Box component="img" src="/assets/images/logo.png" width={50} />
               </Button>
             </Stack>
           </Box>
@@ -98,10 +102,23 @@ export default function TopNavbar() {
             ROUTES.map(route => (
               <TextButton
                 key={route.path}
-                sx={{ mr: 4, fontWeight: 600, color: grey[300], display: { xs: 'none', md: 'flex' } }}
-                component={Link}
-                href={route.path}
-              >{route.name}</TextButton>
+                sx={{
+                  mr: 4,
+                  fontWeight: 600,
+                  color: grey[300],
+                  display: { xs: 'none', md: 'flex' }
+                }}
+              >
+                <ScrollLink
+                  to={route.path}
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                >
+                  {route.name}
+                </ScrollLink>
+              </TextButton>
             ))
           }
 

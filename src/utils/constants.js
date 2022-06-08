@@ -3,35 +3,35 @@ import { grey } from "@mui/material/colors";
 export const ROUTES = [
   {
     name: 'Leaderboard',
-    path: '#leaderboard'
+    path: 'leaderboard'
   },
   {
     name: 'Introduction',
-    path: '#introduction'
+    path: 'introduction'
   },
   {
     name: 'Policy',
-    path: '#policy'
+    path: 'policy'
   },
   {
     name: 'About us',
-    path: '#about-us'
+    path: 'about-us'
   },
   {
     name: 'Roadmap',
-    path: '#roadmap'
+    path: 'roadmap'
   },
   {
     name: 'Our team',
-    path: '#our-team'
+    path: 'our-team'
   },
   {
     name: 'FAQ',
-    path: '#faq'
+    path: 'faq'
   },
   {
     name: 'Community',
-    path: '#community'
+    path: 'community'
   }
 ];
 

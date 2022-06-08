@@ -11,6 +11,7 @@ import RoadmapSection from './RoadmapSection';
 import useUser from '../../hooks/useUser';
 import useWallet from '../../hooks/useWallet';
 import { INTERVAL_TIME } from '../../utils/constants';
+import ScrollFab from '../../components/ScrollFab';
 
 const SECTIONS = [
   {
@@ -78,6 +79,7 @@ export default function Home() {
         ))
       }
       <CommunitySection />
+      <ScrollFab />
     </>
   );
 }
