@@ -1,9 +1,44 @@
 import React from 'react';
-import { Box, Container, Grid, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
-import { FONT_RIGHTEOUS, TEAM_MEMBERS, VAR_FADE_IN_UP, VAR_FADE_IN_DOWN } from '../../utils/constants';
+import {
+  FONT_RIGHTEOUS,
+  TEAM_MEMBERS,
+  VAR_FADE_IN_UP,
+} from '../../utils/constants';
 import CardTeamMember from '../../components/CardTeamMember';
 import MotionDiv from '../../components/MotionDiv';
+import Carousel from '../../components/Carousel';
+
+const SLIDE_SETTINGS = {
+  dots: false,
+  arrows: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  initialSlide: 0,
+  autoplay: true,
+  autoplaySpeed: 9000,
+  responsive: [
+    {
+      breakpoint: 1280,
+      settings: { slidesToShow: 4 }
+    },
+    {
+      breakpoint: 1024,
+      settings: { slidesToShow: 3 }
+    },
+    {
+      breakpoint: 960,
+      settings: { slidesToShow: 2 }
+    },
+    {
+      breakpoint: 480,
+      settings: { slidesToShow: 1, centerPadding: '0' }
+    }
+  ]
+};
 
 export default function OurTeamSection({ bgcolor, id }) {
   return (
@@ -19,17 +54,13 @@ export default function OurTeamSection({ bgcolor, id }) {
             Our Team
           </Typography>
         </MotionDiv>
-        <Grid mt={3} container spacing={6}>
-          {
-            TEAM_MEMBERS.map(member => (
-              <Grid key={member.id} item xs={12} sm={6} md={3}>
-                <MotionDiv variants={VAR_FADE_IN_DOWN}>
-                  <CardTeamMember data={member} />
-                </MotionDiv>
-              </Grid>
-            ))
-          }
-        </Grid>
+        <Box mt={3}>
+          <Carousel
+            slideSettings={SLIDE_SETTINGS}
+            carouselItemComponent={CardTeamMember}
+            data={TEAM_MEMBERS}
+          />
+        </Box>
       </Container>
     </Box>
   );
