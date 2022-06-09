@@ -1,7 +1,7 @@
 # The Frontend of KING Pacman site
 
 ## Live site
-[![Live site](live-site.png)](https://kingpacktoken.com)
+[![Live site](live-site.png)](https://kingpactoken.com)
 
 ## Contact info
 - **Email:** mr.new0509@gmail.com
