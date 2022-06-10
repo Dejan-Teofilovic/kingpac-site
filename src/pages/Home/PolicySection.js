@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import MotionDiv from '../../components/MotionDiv';
@@ -13,6 +13,25 @@ import {
 import CustomLinearProgressbar from '../../components/CustomLinearProgressBar';
 
 export default function PolicySection({ bgcolor, id }) {
+  const [buyPercentage, setBuyPercentage] = useState(0);
+  const [sellPercentage, setSellPercentage] = useState(0);
+
+  useEffect(() => {
+    let _buyPercentage = 0;
+    let _sellPercentage = 0;
+
+    POLICIES_BUY.forEach((dataItem, index) => {
+      _buyPercentage += dataItem.value;
+    });
+
+    POLICIES_SELL.forEach((dataItem, index) => {
+      _sellPercentage += dataItem.value;
+    });
+
+    setBuyPercentage(_buyPercentage);
+    setSellPercentage(_sellPercentage);
+  }, []);
+
   return (
     <Box bgcolor={bgcolor} py={8} id={id}>
       <Container maxWidth="lg">
@@ -40,7 +59,7 @@ export default function PolicySection({ bgcolor, id }) {
               fontSize={{ xs: 18, md: 24 }}
               textAlign="center"
               color={grey[300]}
-            >BUY(9%)</Typography>
+            >BUY ({buyPercentage}%)</Typography>
             <MotionDiv variants={VAR_FADE_IN_UP}>
               <Stack mt={3} spacing={2}>
                 {
@@ -62,7 +81,7 @@ export default function PolicySection({ bgcolor, id }) {
               fontSize={{ xs: 18, md: 24 }}
               textAlign="center"
               color={grey[300]}
-            >SELL(13%)</Typography>
+            >SELL ({sellPercentage}%)</Typography>
             <MotionDiv variants={VAR_FADE_IN_UP}>
               <Stack mt={3} spacing={2}>
                 {
