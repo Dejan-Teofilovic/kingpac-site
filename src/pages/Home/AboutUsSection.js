@@ -15,7 +15,7 @@ export default function AboutUsSection({ bgcolor }) {
             color={grey[300]}
             textAlign="center"
           >
-            Who we are?
+            Know Us!
           </Typography>
         </MotionDiv>
 
@@ -27,11 +27,33 @@ export default function AboutUsSection({ bgcolor }) {
                 color={grey[400]}
                 fontSize={{ xs: 14, md: 18 }}
                 textAlign={{ xs: 'center', md: 'left' }}
-                mt={5}
+                mt={2}
                 px={{ xs: 0, md: 16 }}
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                A cast of highly enthusiastic crypto investors that struggles to provide earning opportunities.
+                We as a community confess that our game is one of the most entertaining and light-hearted that can be played by anyone.
+                We have launched this platform with the aim that we could refresh the foggy childhood memories that are lost somewhere in today's world.
+              </Typography>
+              <Typography
+                fontFamily={FONT_AMARANTH}
+                color={grey[400]}
+                fontSize={{ xs: 14, md: 18 }}
+                textAlign={{ xs: 'center', md: 'left' }}
+                mt={2}
+                px={{ xs: 0, md: 16 }}
+              >
+                By the way of King Pac, we tend to bring happiness and positivity to the people
+                and bring the community a little closer to each other.
+              </Typography>
+              <Typography
+                fontFamily={FONT_AMARANTH}
+                color={grey[400]}
+                fontSize={{ xs: 14, md: 18 }}
+                textAlign={{ xs: 'center', md: 'left' }}
+                mt={2}
+                px={{ xs: 0, md: 16 }}
+              >
+                Trust us the journey would be REVOLUTIONARY.
               </Typography>
             </MotionDiv>
           </Grid>

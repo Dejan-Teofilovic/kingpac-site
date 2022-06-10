@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box, Container, Link, Stack, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
-import { 
-  URL_TELEGRAM_COMMUNITY, 
-  FONT_AMARANTH, 
-  FONT_RIGHTEOUS, 
-  VAR_FADE_IN_UP, 
-  VAR_FADE_IN_DOWN 
+import {
+  URL_TELEGRAM_COMMUNITY,
+  FONT_AMARANTH,
+  FONT_RIGHTEOUS,
+  VAR_FADE_IN_UP,
+  VAR_FADE_IN_DOWN
 } from '../../utils/constants';
 import { PrimaryButton } from '../../components/styledComponents';
 import MotionDiv from '../../components/MotionDiv';
@@ -14,7 +14,7 @@ import MotionDiv from '../../components/MotionDiv';
 export default function CommunitySection() {
   return (
     <Box
-      sx={{ 
+      sx={{
         background: 'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7) ), url(/assets/images/community_background.jpg) no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center'
@@ -35,7 +35,7 @@ export default function CommunitySection() {
         </MotionDiv>
         <MotionDiv variants={VAR_FADE_IN_UP}>
           <Typography mt={3} fontFamily={FONT_AMARANTH} color={grey[300]} fontSize={18} textAlign="center">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Join our Telegram community to stay updated with every update of KINGPAC.
           </Typography>
         </MotionDiv>
         <MotionDiv variants={VAR_FADE_IN_DOWN}>

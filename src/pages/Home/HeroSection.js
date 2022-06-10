@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import {
   COLOR_PRIMARY,
   FONT_RIGHTEOUS,
@@ -168,7 +169,8 @@ export default function HeroSection() {
                   fontSize={{ xs: 18, md: 24 }}
                   textAlign={{ xs: 'center', md: 'left' }}
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Revive those childhood memories to life by playing the Pac-Man game.<br />
+                  Get a feeling of nostalgia. Play. Win. Get Paid!
                 </Typography>
               </MotionDiv>
 
@@ -177,6 +179,7 @@ export default function HeroSection() {
                   <PrimaryButton
                     sx={{ fontSize: { xs: 14, md: 18 }, px: 4 }}
                     onClick={handleOpenDialog}
+                    startIcon={<SportsEsportsIcon />}
                   >
                     Play Game
                   </PrimaryButton>

@@ -34,10 +34,10 @@ const SECTIONS = [
     id: 'roadmap',
     pageSection: RoadmapSection
   },
-  {
-    id: 'our-team',
-    pageSection: OurTeamSection
-  },
+  // {
+  //   id: 'our-team',
+  //   pageSection: OurTeamSection
+  // },
   {
     id: 'faq',
     pageSection: FaqSection

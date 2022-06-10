@@ -27,8 +27,19 @@ export default function IntroductionSection({ bgcolor, id }) {
             mt={5}
             px={{ xs: 0, md: 16 }}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            KingPac is a decentralized and driven by the community.
+            Buying our tokens not only helps you to earn but we also provide amusing utilities that our audience would love to interact with.
+          </Typography>
+          <Typography
+            fontFamily={FONT_AMARANTH}
+            color={grey[400]}
+            fontSize={{ xs: 14, md: 18 }}
+            textAlign={{ xs: 'center', md: 'left' }}
+            mt={2}
+            px={{ xs: 0, md: 16 }}
+          >
+            King Pac Is a Nostalgic Restructuring of the Retro Arcade game Pac Man.
+            Players are required to buy our Tokens that would be accessible to our Infinite Snowball Hurdle, and achievement over a Hurdle would reward you with a sureshot payout that would be deduced from a colossal gaming reward pool that is emerged out of every transaction which ensures the Winner takes it all.
           </Typography>
         </MotionDiv>
         <MotionDiv variants={VAR_FADE_IN_UP}>
@@ -46,8 +57,21 @@ export default function IntroductionSection({ bgcolor, id }) {
             mt={5}
             px={{ xs: 0, md: 16 }}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            The best of the best players would be competing with you. Be aware we publish a leaderboard that reflects your position every 10 seconds among the Players.
+            No stress if you lose, we respect non-Quitters.
+            We would appreciate your hard work by showing nothing but just the best attempts made!
+            Gain your edge and be on the top.
+            This is the only crucial time where you can break all the records and make a legacy of your own provided we promise to keep your wallets full.
+          </Typography>
+          <Typography
+            fontFamily={FONT_AMARANTH}
+            color={grey[400]}
+            fontSize={{ xs: 14, md: 18 }}
+            textAlign={{ xs: 'center', md: 'left' }}
+            mt={2}
+            px={{ xs: 0, md: 16 }}
+          >
+            MAY THE BEST PLAYERS WIN !
           </Typography>
         </MotionDiv>
       </Container>
