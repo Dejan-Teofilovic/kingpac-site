@@ -23,9 +23,10 @@ export default function IntroductionSection({ bgcolor, id }) {
             fontFamily={FONT_AMARANTH}
             color={grey[400]}
             fontSize={{ xs: 14, md: 18 }}
-            textAlign={{ xs: 'center', md: 'left' }}
+            textAlign="justify"
             mt={5}
             px={{ xs: 0, md: 16 }}
+            sx={{ textJustify: 'distribute' }}
           >
             KingPac is a decentralized and driven by the community.
             Buying our tokens not only helps you to earn but we also provide amusing utilities that our audience would love to interact with.
@@ -34,7 +35,7 @@ export default function IntroductionSection({ bgcolor, id }) {
             fontFamily={FONT_AMARANTH}
             color={grey[400]}
             fontSize={{ xs: 14, md: 18 }}
-            textAlign={{ xs: 'center', md: 'left' }}
+            textAlign="justify"
             mt={2}
             px={{ xs: 0, md: 16 }}
           >
@@ -53,7 +54,7 @@ export default function IntroductionSection({ bgcolor, id }) {
             fontFamily={FONT_AMARANTH}
             color={grey[400]}
             fontSize={{ xs: 14, md: 18 }}
-            textAlign={{ xs: 'center', md: 'left' }}
+            textAlign="justify"
             mt={5}
             px={{ xs: 0, md: 16 }}
           >
@@ -67,7 +68,7 @@ export default function IntroductionSection({ bgcolor, id }) {
             fontFamily={FONT_AMARANTH}
             color={grey[400]}
             fontSize={{ xs: 14, md: 18 }}
-            textAlign={{ xs: 'center', md: 'left' }}
+            textAlign="justify"
             mt={2}
             px={{ xs: 0, md: 16 }}
           >

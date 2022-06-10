@@ -235,7 +235,7 @@ export const POLICIES_BUY = [
     value: 2
   },
   {
-    label: 'Buyback',
+    label: 'Buyback and Development',
     value: 2
   },
 ];
@@ -254,7 +254,7 @@ export const POLICIES_SELL = [
     value: 2
   },
   {
-    label: 'Buyback',
+    label: 'Buyback and Development',
     value: 5
   },
 ];
@@ -408,9 +408,9 @@ export const URL_GAME_SITE = 'https://p2e.kingpactoken.com';
 export const URL_BACKEND_API = 'https://kingpactoken.com/api';
 export const URL_PANCAKESWAP = 'https://pancakeswap.finance/swap?outputCurrency=0xe705c3f34bbf38e1e298b65a7668fd5d9cdc0816';
 export const URL_DEXTOOLS = 'https://www.dextools.io/app/bsc/pair-explorer/0xfb3d1faa455fa339778b1e236e12e2271d687e92';
-export const URL_INSTAGRAM = '';
+export const URL_INSTAGRAM = 'https://www.instagram.com/kingpac_bsc/';
 export const URL_BSCSCAN = 'https://bscscan.com/token/0xe705c3f34bbf38e1e298b65a7668fd5d9cdc0816';
-export const URL_TWITTER = '';
+export const URL_TWITTER = 'https://twitter.com/kingpactoken';
 
 export const LOCALSTORAGE_USERDATA = 'kingpacUserdata';
 export const CHANNEL_NAME = 'kingpac';

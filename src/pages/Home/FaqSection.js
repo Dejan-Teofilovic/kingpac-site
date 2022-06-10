@@ -31,6 +31,7 @@ export default function FaqSection({ bgcolor, id }) {
                       fontFamily={FONT_RIGHTEOUS}
                       color={grey[200]}
                       fontSize={{ xs: 14, md: 18 }}
+                      textAlign="justify"
                     >{faqItem.question}</Typography>
                   </AccordionSummary>
                   <AccordionDetails>
@@ -38,6 +39,7 @@ export default function FaqSection({ bgcolor, id }) {
                       fontFamily={FONT_AMARANTH}
                       color={grey[300]}
                       fontSize={{ xs: 14, md: 16 }}
+                      textAlign="justify"
                     >{faqItem.answer}</Typography>
                   </AccordionDetails>
                 </SecondaryAccordion>

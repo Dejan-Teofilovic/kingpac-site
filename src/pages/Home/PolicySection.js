@@ -30,7 +30,7 @@ export default function PolicySection({ bgcolor, id }) {
               color={grey[300]}
               fontWeight={800}
             >&</Typography>
-            &nbsp;Sell Policy
+            &nbsp;sell tax breakdown
           </Typography>
         </MotionDiv>
         <Grid container spacing={8} mt={1}>
@@ -40,7 +40,7 @@ export default function PolicySection({ bgcolor, id }) {
               fontSize={{ xs: 18, md: 24 }}
               textAlign="center"
               color={grey[300]}
-            >BUY</Typography>
+            >BUY(9%)</Typography>
             <MotionDiv variants={VAR_FADE_IN_UP}>
               <Stack mt={3} spacing={2}>
                 {
@@ -62,7 +62,7 @@ export default function PolicySection({ bgcolor, id }) {
               fontSize={{ xs: 18, md: 24 }}
               textAlign="center"
               color={grey[300]}
-            >SELL</Typography>
+            >SELL(13%)</Typography>
             <MotionDiv variants={VAR_FADE_IN_UP}>
               <Stack mt={3} spacing={2}>
                 {

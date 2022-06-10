@@ -26,7 +26,7 @@ export default function AboutUsSection({ bgcolor }) {
                 fontFamily={FONT_AMARANTH}
                 color={grey[400]}
                 fontSize={{ xs: 14, md: 18 }}
-                textAlign={{ xs: 'center', md: 'left' }}
+                textAlign="justify"
                 mt={2}
                 px={{ xs: 0, md: 16 }}
               >
@@ -38,7 +38,7 @@ export default function AboutUsSection({ bgcolor }) {
                 fontFamily={FONT_AMARANTH}
                 color={grey[400]}
                 fontSize={{ xs: 14, md: 18 }}
-                textAlign={{ xs: 'center', md: 'left' }}
+                textAlign="justify"
                 mt={2}
                 px={{ xs: 0, md: 16 }}
               >
@@ -49,7 +49,7 @@ export default function AboutUsSection({ bgcolor }) {
                 fontFamily={FONT_AMARANTH}
                 color={grey[400]}
                 fontSize={{ xs: 14, md: 18 }}
-                textAlign={{ xs: 'center', md: 'left' }}
+                textAlign="justify"
                 mt={2}
                 px={{ xs: 0, md: 16 }}
               >
