@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Container, Link, Stack, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
+import { Telegram } from '@mui/icons-material';
 import {
   URL_TELEGRAM_COMMUNITY,
   FONT_AMARANTH,
@@ -45,6 +46,7 @@ export default function CommunitySection() {
               component={Link}
               href={URL_TELEGRAM_COMMUNITY}
               target="_blank"
+              startIcon={<Telegram />}
             >
               Join our Telegram channel
             </PrimaryButton>

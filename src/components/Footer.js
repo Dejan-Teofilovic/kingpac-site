@@ -56,7 +56,12 @@ export default function Footer() {
             width={100}
           />
         </Stack>
-        <Typography color="white" textAlign="center" fontSize={{ xs: 20, md: 28 }} fontWeight={900}>
+        <Typography
+          color="white"
+          textAlign="center"
+          fontSize={{ xs: 20, md: 28 }}
+          fontWeight={900}
+        >
           KING PAC
         </Typography>
         <Stack direction="row" justifyContent="center" spacing={3}>
