@@ -4,6 +4,7 @@ import {
   Button,
   Card,
   Dialog,
+  IconButton,
   LinearProgress,
   linearProgressClasses,
   TableContainer,
@@ -46,6 +47,13 @@ export const TextButton = styled(Button)`
   font-family: ${FONT_RIGHTEOUS};
   text-transform: capitalize;
 `;
+
+export const PrimaryIconButton = styled(IconButton)({
+  backgroundColor: COLOR_PRIMARY,
+  '&:hover': {
+    backgroundColor: COLOR_PRIMARY
+  }
+});
 
 export const PrimaryTextField = styled(TextField)({
   '& label.Mui-focused': {

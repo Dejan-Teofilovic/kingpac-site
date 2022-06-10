@@ -14,7 +14,7 @@ import {
   COLOR_PRIMARY, 
   FONT_AMARANTH, 
   FONT_RIGHTEOUS, 
-  URL_BUY_TOKEN, 
+  URL_PANCAKESWAP, 
   URL_TELEGRAM_COMMUNITY 
 } from '../utils/constants';
 
@@ -40,7 +40,7 @@ export default function DialogAlert({ open, handleClose }) {
           <b>
             <Link
               target="_blank"
-              href={URL_BUY_TOKEN}
+              href={URL_PANCAKESWAP}
               sx={{ color: 'black', textDecoration: 'none' }}
             >
               Buy token.

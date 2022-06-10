@@ -5,7 +5,7 @@ import FaqSection from './FaqSection';
 import HeroSection from './HeroSection';
 import IntroductionSection from './IntroductionSection';
 import LeaderboardSection from './LeaderboardSection';
-import OurTeamSection from './OurTeamSection';
+// import OurTeamSection from './OurTeamSection';
 import PolicySection from './PolicySection';
 import RoadmapSection from './RoadmapSection';
 import useUser from '../../hooks/useUser';
