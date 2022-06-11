@@ -415,4 +415,6 @@ export const URL_TWITTER = 'https://twitter.com/kingpactoken';
 export const LOCALSTORAGE_USERDATA = 'kingpacUserdata';
 export const CHANNEL_NAME = 'kingpac';
 
-export const INTERVAL_TIME = 20000;
+export const INTERVAL_TIME = 30000;
+
+export const NO_WINNERS = 'No Winners';

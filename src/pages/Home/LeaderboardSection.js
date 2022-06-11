@@ -18,6 +18,7 @@ import { PrimaryCard, SecondaryTableContainer } from '../../components/styledCom
 import {
   FONT_AMARANTH,
   FONT_RIGHTEOUS,
+  NO_WINNERS,
   VAR_FADE_IN_DOWN,
   VAR_FADE_IN_UP
 } from '../../utils/constants';
@@ -63,7 +64,7 @@ export default function LeaderboardSection({ bgcolor, id }) {
         <MotionDiv variants={VAR_FADE_IN_UP}>
           <PrimaryCard sx={{ mt: { xs: 3, md: 6 } }}>
             <CardHeader
-              title="Winners of this week"
+              title="Current week leaderboard"
               titleTypographyProps={{
                 sx: {
                   fontFamily: FONT_RIGHTEOUS,
@@ -113,7 +114,7 @@ export default function LeaderboardSection({ bgcolor, id }) {
                 }
               </Table>
               {
-                winnersOfThisWeek.length === 0 && (<NoData />)
+                winnersOfThisWeek.length === 0 && (<NoData text={NO_WINNERS} />)
               }
             </SecondaryTableContainer>
           </PrimaryCard>
@@ -121,7 +122,7 @@ export default function LeaderboardSection({ bgcolor, id }) {
         <MotionDiv variants={VAR_FADE_IN_UP}>
           <PrimaryCard sx={{ mt: { xs: 3, md: 6 } }}>
             <CardHeader
-              title="Winners of this week"
+              title="Last week leaderboard"
               titleTypographyProps={{
                 sx: {
                   fontFamily: FONT_RIGHTEOUS,
@@ -171,7 +172,7 @@ export default function LeaderboardSection({ bgcolor, id }) {
                 }
               </Table>
               {
-                winnersOfLastWeek.length === 0 && (<NoData />)
+                winnersOfLastWeek.length === 0 && (<NoData text={NO_WINNERS} />)
               }
             </SecondaryTableContainer>
           </PrimaryCard>
