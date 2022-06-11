@@ -1,4 +1,4 @@
-import React, { createElement, useState } from 'react';
+import React, { createElement, useEffect } from 'react';
 import AboutUsSection from './AboutUsSection';
 import CommunitySection from './CommunitySection';
 import FaqSection from './FaqSection';
@@ -48,7 +48,7 @@ export default function Home() {
   const { getWinners } = useUser();
   const { getBalanceOfRewardPool } = useWallet();
 
-  useState(() => {
+  useEffect(() => {
     getWinners();
     getBalanceOfRewardPool();
     const interval = setInterval(() => {
