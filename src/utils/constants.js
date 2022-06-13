@@ -385,7 +385,7 @@ export const SCAN_API_KEY = 'MQPQP1JFJXGA72RYM5SRSR45YBDBZ7ADXX';  //  For env B
 // export const SCAN_API_KEY = 'C16EIZX6E95YXUNUM7B156R3GE2BIE3RCP'; //  For env Mumbai
 export const ADDRESS_OF_REWARD_POOL = '0x73957fea02De56019A771B1EECcf05fF6Cb66a30';
 
-export const TOKEN_AMOUNT = 0;
+export const TOKEN_AMOUNT = 1000000;
 
 //  Severities
 export const SUCCESS = 'success';
@@ -403,8 +403,8 @@ export const MESSAGE_USER_ALREADY_EXISTED = 'You already registered in our site.
 
 //  Urls
 export const URL_TELEGRAM_COMMUNITY = 'https://t.me/KingPacToken';
-// export const URL_GAME_SITE = 'https://p2e.kingpactoken.com';
-export const URL_GAME_SITE = 'https://astonishing-gecko-ae33d5.netlify.app/';
+export const URL_GAME_SITE = 'https://p2e.kingpactoken.com';
+// export const URL_GAME_SITE = 'https://astonishing-gecko-ae33d5.netlify.app/';
 export const URL_BACKEND_API = 'https://kingpactoken.com/api';
 export const URL_PANCAKESWAP = 'https://pancakeswap.finance/swap?outputCurrency=0xe705c3f34bbf38e1e298b65a7668fd5d9cdc0816';
 export const URL_DEXTOOLS = 'https://www.dextools.io/app/bsc/pair-explorer/0xfb3d1faa455fa339778b1e236e12e2271d687e92';
