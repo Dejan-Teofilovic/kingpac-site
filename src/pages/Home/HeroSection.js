@@ -35,8 +35,9 @@ export default function HeroSection() {
 
   const getBalance = async () => {
     try {
-      const { result } = await (await fetch(`https://api.bscscan.com/api?module=account&action=tokenbalance&contractaddress=${TOKEN_CONTRACT_ADDRESS}&address=${currentAccount}&tag=latest&apikey=${SCAN_API_KEY}`)).json();
-      return Number(result) * 10 ** -18;
+      const data = await (await fetch(`https://api.bscscan.com/api?module=account&action=tokenbalance&contractaddress=${TOKEN_CONTRACT_ADDRESS}&address=${currentAccount}&tag=latest&apikey=${SCAN_API_KEY}`)).json();
+      console.log('>>>>> data > ', data)
+      return Number(data.result) * 10 ** -8;
     } catch (error) {
       openAlert({
         severity: 'error',
